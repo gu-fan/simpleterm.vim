@@ -55,7 +55,16 @@ fun! simpleterm.run(cmd) dict
     if empty(trim(a:cmd))
         echom "should provide cmds"
     else
-        let buf = term_start(a:cmd, {"term_rows":1,"hidden":1,"norestore":1,"term_kill":"term","term_finish":"open","term_opencmd":self.pos." ".self.row."sp|buf %d"})
+        " we can not skip, cause no way to reuse the old one
+        " let skip_new = 0
+        " if exists("self.bg") && bufexists(self.bg)
+        "   let job = term_getjob(self.bg)
+        "   if job_status(job) == "run"
+        "     let skip_new = 1
+        "   endif
+        " endif
+        
+        let self.bg = term_start(a:cmd, {"term_rows":1,"hidden":1,"norestore":1,"term_kill":"term","term_finish":"open","term_opencmd":self.pos." ".self.row."sp|buf %d"})
         call add(self.bufs, buf)
         echom "start running at " . buf . ": ". a:cmd
     endif
