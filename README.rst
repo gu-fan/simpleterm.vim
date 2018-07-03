@@ -16,7 +16,7 @@ Install
     ``Plug 'gu-fan/simpleterm.vim'``
 
 
-if ``/bin/zsh`` exists, it will be used
+.. NOTE if ``/bin/zsh`` exists, it will be used
 
 
 Usage
@@ -67,7 +67,7 @@ Maps
 Detail
 ~~~~~~
 
-**Show/Hide/Toggle**
+**show/hide**
 
 ``Sshow`` create/show a minimal terminal.
 
@@ -75,7 +75,7 @@ Detail
 
 ``Stoggle`` toggle the minimal terminal.
 
-**execute**
+**execution**
 
 ``Scd`` change dir of terminal, if no ``path`` provided, change to current file's dir
 
@@ -115,18 +115,31 @@ Detail
    Sfile  ~/test.sh
 
 
-**Alter**
+**alter**
 
 ``Salt`` create another terminal, which wont be triggerd by commands
 
 ``Skill`` Kill all terminal
 
 
+Further
+-------
+
+All function and option are in ``g:simpleterm`` dict,
+You can change or use it::
+
+    g:simpleterm.row = 7                    row height for new terminal
+    g:simpleterm.pos = 'below'              row position for new terminal
+
+    g:simpleterm.bufs                       all the termial of simpleterm
+    g:simpleterm.buf                        current main terminal
+    g:simpleterm.bg                         current bg terminal
+
 Author & License
 ----------------
 
-Author:
+Author
     gu.fan at https://github.com/gu-fan
 
-License:
+License
     wtfpl at http://sam.zoy.org/wtfpl/COPYING.

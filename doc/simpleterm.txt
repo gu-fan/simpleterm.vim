@@ -12,8 +12,8 @@
 
 
 
-1. Require & Install                                    *simpleterm-install*
 -----------------------------------------------------------------------------
+1. Require & Install                                    *simpleterm-install*
 
 Require >
     Vim 8.1+ and |+terminal|
@@ -21,11 +21,14 @@ Require >
 Install >
     Plug 'gu-fan/simpleterm.vim'
 
-if '/bin/zsh' exists, it will be used
+Note if '/bin/zsh' exists, it will be used
 
-2. Usage                                                *simpleterm-usage*
 -----------------------------------------------------------------------------
-2.1 Commands
+2. Usage                                                *simpleterm-usage*
+
+
+------------------------------------------
+2.1 Commands~
 
 |Sshow| show a terminal 
 |Shide| hide the terminal
@@ -42,7 +45,7 @@ if '/bin/zsh' exists, it will be used
 |Skill| Kill all the terminal
 
 ------------------------------------------
-2.2 Maps
+2.2 Maps~
 >
 
     nnor <Leader>sw :Sshow<CR>
@@ -65,11 +68,11 @@ if '/bin/zsh' exists, it will be used
     tnor <F1>   <C-\><C-n>          
 
 ------------------------------------------
-2.3 Detail
+2.3 Details~
 
 
 ------------------
-Show/Hide/Toggle
+show/hide~
 
 *Sshow* create/show a minimal terminal.
 
@@ -78,7 +81,7 @@ Show/Hide/Toggle
 *Stoggle* toggle the minimal terminal.
 
 ------------------
-Execute
+execution~
 
 *Scd* change dir of terminal, if no {path} provided, change to current file's dir
 
@@ -114,14 +117,27 @@ Execute
    Sfile  ~/test.sh
 
 ------------------
-Alter
+alter~
 
 *Salt* create another terminal, which wont be triggerd by commands
 
 *Skill* Kill all terminal
 
 -----------------------------------------------------------------------------
-Author & License  
+3. Further                                              *simpleterm-further*
+
+All function and option are in {g:simpleterm} dict,
+You can change or use it >
+
+    g:simpleterm.row = 7                    row height for new terminal
+    g:simpleterm.pos = 'below'              row position for new terminal
+
+    g:simpleterm.bufs                       all the termial of simpleterm
+    g:simpleterm.buf                        current main terminal
+    g:simpleterm.bg                         current bg terminal
+
+-----------------------------------------------------------------------------
+4. Author & License  
 
 Author: >
     gu.fan at https://github.com/gu-fan
