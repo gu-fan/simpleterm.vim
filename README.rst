@@ -1,7 +1,7 @@
 simpleterm.vim
 ==============
 
-Simple terminal in vim
+simple terminal in vim
 
 .. image::
    https://user-images.githubusercontent.com/579129/42217450-da0da526-7ef7-11e8-9943-6e416efc137f.png
@@ -15,8 +15,7 @@ Require
 Install
     ``Plug 'gu-fan/simpleterm.vim'``
 
-
-.. NOTE if ``/bin/zsh`` exists, it will be used
+:NOTE: if ``/bin/zsh`` exists, it will be used
 
 
 Usage
