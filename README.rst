@@ -15,7 +15,7 @@ Require
 Install
     ``Plug 'gu-fan/simpleterm.vim'``
 
-:NOTE: if ``/bin/zsh`` exists, it will be used
+**NOTE** if ``/bin/zsh`` exists, it will be used
 
 
 Usage
