@@ -5,6 +5,7 @@ Simple terminal in vim
 
 .. image::
     https://user-images.githubusercontent.com/579129/42194902-d54fadd0-7ea8-11e8-9a15-310e4f1611d7.png
+   :width: 300
 
 
 Require and Install
@@ -121,3 +122,12 @@ Detail
 
 ``Skll`` Kill all terminal
 
+
+Author & License
+----------------
+
+Author:
+    gu.fan at https://github.com/gu-fan
+
+License:
+    wtfpl at http://sam.zoy.org/wtfpl/COPYING.

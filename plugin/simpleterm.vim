@@ -1,4 +1,6 @@
 " vim:fdm=indent
+" Author:    gu.fan at https://github.com/gu-fan
+" License:   wtfpl at http://sam.zoy.org/wtfpl/COPYING.
 if !has("terminal")
     echom "[simpleterm.vim] vim should have +terminal support (8.1+)"
     finish
