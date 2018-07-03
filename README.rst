@@ -3,7 +3,7 @@ simpleterm.vim
 
 simple terminal in vim
 
-``>_ without losing focus``
+``without losing focus``
 
 .. image::
    https://user-images.githubusercontent.com/579129/42217450-da0da526-7ef7-11e8-9943-6e416efc137f.png

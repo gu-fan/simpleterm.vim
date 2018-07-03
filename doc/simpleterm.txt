@@ -1,4 +1,4 @@
-*simpleterm* simple terminal in vim. 
+*simpleterm* simple terminal in vim.  ( without losing focus
 
 
 
