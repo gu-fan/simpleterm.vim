@@ -23,6 +23,8 @@ if '/bin/zsh' exists, it will be used
 
 |Scd| set terminal's dir
 |Sexe| execute in terminal
+|Srun| run a backgorund job and show after finished
+
 |Sline| execute in terminal with line
 |Sfile| source in terminal with file
 
@@ -32,21 +34,25 @@ if '/bin/zsh' exists, it will be used
 ------------------------------------------
 2.2 Maps
 >
-    <leader>ss Stoggle
-    <leader>sw Sshow
-    <leader>sh Shide
 
-    <leader>sc Scd
+    nnor <Leader>sw :Sshow<CR>
+    nnor <Leader>sh :Shide<CR>
+    nnor <Leader>ss :Stoggle<CR>
 
-    <leader>sl Sline
-    v_<leader>sl Sline with multi line
+    nnor <Leader>sc :Scd<CR>
 
-    <leader>sf Sfile source current file
+    nnor <Leader>se :Sexe<Space>
+    nnor <Leader>sr :Srun<Space>
 
-    <leader>sa Salt
-    <leader>sk Skill
+    nnor <Leader>sl :Sline<CR>
+    vnor <Leader>sl :Sline<CR>      
+    nnor <Leader>sf :Sfile<CR>
 
-+ In terminal, use <Esc> to toggle terminal-mode 
+    nnor <Leader>sa :Salt<CR>
+    nnor <Leader>sk :Skill<CR>
+
+    " In terminal, use <F1> to toggle terminal-mode
+    tnor <F1>   <C-\><C-n>          
 
 ------------------------------------------
 2.3 Detail
@@ -72,7 +78,6 @@ Execute
 *Srun* Run a command in background, and show terminal when finished, {cmd} needed
 
 *Sline* execute current line, if {viusal} lines selected, execute multi line
-
 *Sfile* source file, if no {file} provided, source current file >
 
    " terminal cd to %:p:h
@@ -103,6 +108,7 @@ Alter
 
 
 *Salt* create another terminal, which wont be triggerd by commands
+
 *Skill* Kill all terminal
 
 

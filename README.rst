@@ -31,7 +31,8 @@ Commands
 
 + ``Scd`` set terminal's dir
 + ``Sexe`` execute in terminal
-+ ``Srun`` Run a background job and open terminal when finished
++ ``Srun`` run a background job and show after finished
+
 + ``Sline`` execute in terminal with line
 + ``Sfile`` source in terminal with file
 
@@ -41,24 +42,27 @@ Commands
 Maps
 ~~~~
 
-::
+.. code:: vim
 
-    <leader>ss :Stoggle
-    <leader>sw :Sshow
-    <leader>sh :Shide
+    nnor <Leader>sw :Sshow<CR>
+    nnor <Leader>sh :Shide<CR>
+    nnor <Leader>ss :Stoggle<CR>
 
-    <leader>sc :Scd
-    <leader>se :Sexe
-    <leader>sr :Srun
+    nnor <Leader>sc :Scd<CR>
 
-    <leader>sl :Sline
-    visual <leader>sl :Sline with multi line
-    <leader>sf :Sfile source current file
+    nnor <Leader>se :Sexe<Space>
+    nnor <Leader>sr :Srun<Space>
 
-    <leader>sa :Salt
-    <leader>sk :Skill
+    nnor <Leader>sl :Sline<CR>
+    vnor <Leader>sl :Sline<CR>      
+    nnor <Leader>sf :Sfile<CR>
 
-    In terminal, use <F1> to toggle terminal-mode to scroll up
+    nnor <Leader>sa :Salt<CR>
+    nnor <Leader>sk :Skill<CR>
+
+    " In terminal, use <F1> to toggle terminal-mode
+    tnor <F1>   <C-\><C-n>          
+        
 
 Detail
 ~~~~~~
@@ -84,7 +88,6 @@ Detail
 ``Sfile`` source file, if no ``file`` provided, source current file
 
 .. code:: vim
-
 
    " terminal cd to %:p:h
    Scd
@@ -112,9 +115,9 @@ Detail
    Sfile  ~/test.sh
 
 
-**alter**
+**Alter**
 
 ``Salt`` create another terminal, which wont be triggerd by commands
 
-``Skll`` Kill all the terminal.
+``Skll`` Kill all terminal
 

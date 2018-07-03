@@ -7,7 +7,6 @@ endif
 set title                       " set the terminal title to the current file
 set ttyfast                     " better screen redraw
 set visualbell                  " turn on the visual bell
-tnoremap <F1>   <C-\><C-n>
 
 if executable('/bin/zsh')
     set shell=/bin/zsh
@@ -174,9 +173,13 @@ nnor <Leader>se :Sexe<Space>
 nnor <Leader>sr :Srun<Space>
 
 nnor <Leader>sl :Sline<CR>
-vnor <Leader>sl :Sline<CR>
+vnor <Leader>sl :Sline<CR>      
 nnor <Leader>sf :Sfile<CR>
 
 nnor <Leader>sa :Salt<CR>
 nnor <Leader>sk :Skill<CR>
+
+" In terminal, use <F1> to toggle terminal-mode
+tnor <F1>   <C-\><C-n>          
+
 
