@@ -5,16 +5,13 @@
 1. Require & Install                                    *simpleterm-install*
 -----------------------------------------------------------------------------
 
-Require
+Require >
+    Vim 8.1+ and |+terminal|
 
-Vim 8.1+ and |+terminal|
+Install >
+    Plug 'gu-fan/simpleterm.vim'
 
 if '/bin/zsh' exists, it will be used
-
-Install
-
-Plug 'gu-fan/simpleterm.vim'
-
 
 2. Usage                                                *simpleterm-usage*
 -----------------------------------------------------------------------------
@@ -30,22 +27,24 @@ Plug 'gu-fan/simpleterm.vim'
 |Sfile| source in terminal with file
 
 |Salt| create an alternative terminal
-
+|Sill| Kill all the terminal
 
 ------------------------------------------
 2.2 Maps
+>
+    <leader>ss Stoggle
+    <leader>sw Sshow
+    <leader>sh Shide
 
-+ <leader>ss Stoggle
-+ <leader>sw Sshow
-+ <leader>sh Shide
+    <leader>sc Scd
 
-+ <leader>sc Scd
+    <leader>sl Sline
+    v_<leader>sl Sline with multi line
 
-+ <leader>sl Sline
-+ visual <leader>sl Sline with multi line
-+ <leader>sf Sfile source current file
+    <leader>sf Sfile source current file
 
-+ <leader>sa Salt
+    <leader>sa Salt
+    <leader>sk Skill
 
 + In terminal, use <Esc> to toggle terminal-mode 
 
@@ -69,14 +68,11 @@ Execute
 
 *Scd* change dir of terminal, if no arg provided, change to current file's dir
 
-*Sexe* execute command in terminal
+*Sexe* execute commands in terminal, {arg} should be provided
 
-*Sline* execute current line, if visual selected, execute multi line
+*Sline* execute current line, if {viusal} lines selected, execute multi line
 
-*Sfile* source current file, if arg provided, source target file
-
-.. code:: vim
-
+*Sfile* source current file, if {arg}provided, source target file >
 
    " terminal cd to %:p:h
    Scd
@@ -106,3 +102,4 @@ Alter
 
 
 *Salt* create another terminal, which wont be triggerd by commands
+*Skill* Kill all terminal

@@ -12,9 +12,11 @@ Require and Install
 
 Vim 8.1+  with ``+terminal``
 
-if ``/bin/zsh`` exists, it will be used
 
 ``Plug 'gu-fan/simpleterm.vim'``
+
+
+if ``/bin/zsh`` exists, it will be used
 
 
 Usage
@@ -23,33 +25,38 @@ Usage
 Commands
 ~~~~~~~~
 
-+ Sshow show a terminal 
-+ Shide hide the terminal
-+ Stoggle toggle the terminal
++ ``Sshow`` show a terminal 
++ ``Shide`` hide the terminal
++ ``Stoggle`` toggle the terminal
 
-+ Scd set terminal's dir
-+ Sexe execute in terminal
-+ Sline execute in terminal with line
-+ Sfile source in terminal with file
++ ``Scd`` set terminal's dir
++ ``Sexe`` execute in terminal
++ ``Sline`` execute in terminal with line
++ ``Sfile`` source in terminal with file
 
-+ Salt create an alternative terminal
++ ``Salt`` create an alternative terminal
++ ``SKill`` Kill all the terminal
 
 Maps
 ~~~~
 
-+ <leader>ss :Stoggle
-+ <leader>sw :Sshow
-+ <leader>sh :Shide
+::
 
-+ <leader>sc :Scd
+    <leader>ss :Stoggle
+    <leader>sw :Sshow
+    <leader>sh :Shide
 
-+ <leader>sl :Sline
-+ visual <leader>sl :Sline with multi line
-+ <leader>sf :Sfile source current file
+    <leader>sc :Scd
+    <leader>se :Sexe
 
-+ <leader>sa :Salt
+    <leader>sl :Sline
+    visual <leader>sl :Sline with multi line
+    <leader>sf :Sfile source current file
 
-+ In terminal, use <F1> to toggle terminal-mode to scroll up
+    <leader>sa :Salt
+    <leader>sk :Skill
+
+    In terminal, use <F1> to toggle terminal-mode to scroll up
 
 Detail
 ~~~~~~
@@ -101,4 +108,5 @@ Detail
 **alter**
 
 ``Salt`` create another terminal, which wont be triggerd by commands
+``Skll`` Kill all the terminal.
 

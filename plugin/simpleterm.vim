@@ -8,7 +8,6 @@ set ttyfast                     " better screen redraw
 set visualbell                  " turn on the visual bell
 tnoremap <F1>   <C-\><C-n>
 
-let g:simpleterm.row = 7
 
 if executable('/bin/zsh')
     set shell=/bin/zsh
@@ -18,6 +17,9 @@ if !exists("g:simpleterm")
     let g:simpleterm= {"bufs":[]}
 endif
 
+let g:simpleterm.row = 7
+let g:simpleterm.pos = "below"
+
 fun! simpleterm.get() dict
     if exists("self.buf") && bufexists(self.buf)
         if bufwinnr(self.buf) != -1
@@ -25,13 +27,13 @@ fun! simpleterm.get() dict
             " exe bufwinnr(self.buf) . "wincmd w"
         else
             let cur = winnr()
-            exe 'bot '. self.row. 'sp'
+            exe self.pos.' '. self.row. 'sp'
             exe "buf " . self.buf
             exe cur . 'wincmd w'
         endif
     else
         let cur = winnr()
-        exe 'bot terminal ++rows='. self.row.' ++kill=term'
+        exe self.pos.' terminal ++rows='. self.row.' ++kill=term'
         let self.buf = bufnr("$")
         exe cur . 'wincmd w'
     endif
@@ -102,14 +104,28 @@ endfun
 
 fun! simpleterm.alt() dict
     let cur = winnr()
-    exe 'bot terminal ++rows='. self.row.' ++kill=term'
+    exe self.pos.' terminal ++rows='. self.row.' ++kill=term'
     let last = bufnr('$')
     if !exists("self.buf") || !bufexists(self.buf)
-        self.buf = last
+        let self.buf = last
     endif
     call add(self.bufs, bufnr('$'))
     exe cur . 'wincmd w'
     return last
+endfun
+
+fun! simpleterm.kill() dict
+    for k in self.bufs
+        if bufexists(k)
+            sil! exe "bd! " . k
+        endif
+    endfor
+
+    if bufexists(self.buf)
+        sil! exe "bd! " . self.buf
+    endif
+    let self.bufs = []
+    let self.buf = v:null
 endfun
 
 
@@ -121,6 +137,7 @@ com! -nargs=* -complete=file Sexe call simpleterm.exe(<q-args>)
 com! -nargs=?  Scd  call simpleterm.cd(<q-args>)
 com! -range -nargs=0  Sline call simpleterm.line(<line1>, <line2>)
 com! -nargs=?  Sfile call simpleterm.file(<q-args>)
+com! -nargs=0  Skill call simpleterm.kill()
 
 
 
@@ -128,10 +145,13 @@ nnor <Leader>ss :Stoggle<CR>
 nnor <Leader>sw :Sshow<CR>
 nnor <Leader>sh :Shide<CR>
 
-nnor <Leader>sa :Salt<CR>
 
 nnor <Leader>sc :Scd<CR>
+
+nnor <Leader>se :Sexe<Space>
 nnor <Leader>sl :Sline<CR>
 vnor <Leader>sl :Sline<CR>
 nnor <Leader>sf :Sfile<CR>
 
+nnor <Leader>sa :Salt<CR>
+nnor <Leader>sk :Skill<CR>
