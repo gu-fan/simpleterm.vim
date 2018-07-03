@@ -9,11 +9,11 @@ Simple terminal in vim
 
 Require and Install
 -------------------
+Require
+    Vim 8.1+  with ``+terminal``
 
-Vim 8.1+  with ``+terminal``
-
-
-``Plug 'gu-fan/simpleterm.vim'``
+Install
+    ``Plug 'gu-fan/simpleterm.vim'``
 
 
 if ``/bin/zsh`` exists, it will be used
