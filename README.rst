@@ -2,7 +2,7 @@ SimpleTerm.vim
 ==============
 
 
-Simple Terminal with vim ``+terminal`` support
+Simple Terminal in vim
 
 Require
 -------
