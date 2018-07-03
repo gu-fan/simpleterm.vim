@@ -15,4 +15,4 @@ else
 fi 
 
 # use Scd to change dir
-cat ./data.json | python -m json.tool
+cat ./data.json
