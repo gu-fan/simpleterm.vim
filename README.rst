@@ -119,7 +119,7 @@ Detail
 
 ``Salt`` create another terminal, which wont be triggerd by commands
 
-``Skll`` Kill all terminal
+``Skill`` Kill all terminal
 
 
 Author & License

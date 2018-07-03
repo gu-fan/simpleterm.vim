@@ -39,7 +39,7 @@ if '/bin/zsh' exists, it will be used
 |Sfile| source in terminal with file
 
 |Salt| create an alternative terminal
-|Sill| Kill all the terminal
+|Skill| Kill all the terminal
 
 ------------------------------------------
 2.2 Maps
