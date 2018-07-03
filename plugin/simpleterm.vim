@@ -6,7 +6,9 @@ endif
 set title                       " set the terminal title to the current file
 set ttyfast                     " better screen redraw
 set visualbell                  " turn on the visual bell
-tnoremap <ESC>   <C-\><C-n>
+tnoremap <F1>   <C-\><C-n>
+
+let g:simpleterm.row = 7
 
 if executable('/bin/zsh')
     set shell=/bin/zsh
@@ -23,13 +25,13 @@ fun! simpleterm.get() dict
             " exe bufwinnr(self.buf) . "wincmd w"
         else
             let cur = winnr()
-            below 5sp
+            exe 'bot '. self.row. 'sp'
             exe "buf " . self.buf
             exe cur . 'wincmd w'
         endif
     else
         let cur = winnr()
-        below terminal ++rows=5 ++kill=term
+        exe 'bot terminal ++rows='. self.row.' ++kill=term'
         let self.buf = bufnr("$")
         exe cur . 'wincmd w'
     endif
@@ -72,9 +74,9 @@ endfun
 fun! simpleterm.file(...) dict
     if a:0 == 0 || a:1 == ""
         let file = expand('%:p')
-        call self.exe('source '. file)
+        call self.exe('sh '. file)
     else
-        call self.exe('source ' . a:1)
+        call self.exe('sh ' . a:1)
     endif
 endfun
 
@@ -100,7 +102,7 @@ endfun
 
 fun! simpleterm.alt() dict
     let cur = winnr()
-    below terminal ++rows=5 ++kill=term
+    exe 'bot terminal ++rows='. self.row.' ++kill=term'
     let last = bufnr('$')
     if !exists("self.buf") || !bufexists(self.buf)
         self.buf = last

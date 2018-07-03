@@ -1,29 +1,24 @@
-SimpleTerm.vim
-==============
-
-Simple Terminal in vim
-
-==============================================================================
-1. Require                                              *simpleterm-require*
-
-Vim 8.1+
-
-+terminal
-
-if has */bin/zsh* exists, it will be used
-
-==============================================================================
-2. Install                                              *simpleterm-install*
+*simpleterm* simple terminal in vim.
 
 
-Plug 'gufan/simpleterm.vim'
+
+1. Require & Install                                    *simpleterm-install*
+-----------------------------------------------------------------------------
+
+Require
+
+Vim 8.1+ and |+terminal|
+
+if '/bin/zsh' exists, it will be used
+
+Install
+
+Plug 'gu-fan/simpleterm.vim'
 
 
-==============================================================================
-3. Usage                                                *simpleterm-usage*
-
-
-3.1 Commands
+2. Usage                                                *simpleterm-usage*
+-----------------------------------------------------------------------------
+2.1 Commands
 
 |Sshow| show a terminal 
 |Shide| hide the terminal
@@ -36,7 +31,9 @@ Plug 'gufan/simpleterm.vim'
 
 |Salt| create an alternative terminal
 
-3.2 Maps
+
+------------------------------------------
+2.2 Maps
 
 + <leader>ss Stoggle
 + <leader>sw Sshow
@@ -52,8 +49,11 @@ Plug 'gufan/simpleterm.vim'
 
 + In terminal, use <Esc> to toggle terminal-mode 
 
-3.3 Detail
+------------------------------------------
+2.3 Detail
 
+
+------------------
 Show/Hide/Toggle
 
 *Sshow* create/show a minimal terminal.
@@ -62,13 +62,8 @@ Show/Hide/Toggle
 
 *Stoggle* toggle the minimal terminal.
 
-.. code:: vim
 
-   Sshow
-   Shide
-   Stoggle
-
-
+------------------
 Execute
 
 
@@ -106,13 +101,8 @@ Execute
    Sfile  ~/test.sh
 
 
+------------------
 Alter
 
 
 *Salt* create another terminal, which wont be triggerd by commands
-
-.. code:: vim
-
-   " create another terminal
-   Salt
-

@@ -1,9 +1,18 @@
-echo '1'
+echo 1
+echo 2
+echo 3
+echo 4
+echo 5
 
-echo 12
-echo 13
-echo 14
+ps aux | grep vim
 
-echo 15
-echo 16
+NUM1=2
+NUM2=2
+if [ $NUM1 -eq $NUM2 ]; then
+	echo "Both Values are equal"
+else 
+	echo "Values are NOT equal"
+fi 
 
+# use Scd to change dir
+cat ./data.json | python -m json.tool

@@ -1,22 +1,22 @@
 SimpleTerm.vim
 ==============
 
+Simple terminal in vim
 
-Simple Terminal in vim
+.. image::
+    https://user-images.githubusercontent.com/579129/42194902-d54fadd0-7ea8-11e8-9a15-310e4f1611d7.png
 
 Require
 -------
 
-Vim 8.1+
+Vim 8.1+  with ``+terminal``
 
-``+terminal``
-
-if has ``/bin/zsh`` exists, it will be used
+if ``/bin/zsh`` exists, it will be used
 
 Install
 -------
 
-``Plug 'gufan/simpleterm.vim'``
+``Plug 'gu-fan/simpleterm.vim'``
 
 
 Usage
@@ -51,7 +51,7 @@ Maps
 
 + <leader>sa :Salt
 
-+ In terminal, use <Esc> to toggle terminal-mode 
++ In terminal, use <F1> to toggle terminal-mode to scroll up
 
 Detail
 ~~~~~~
@@ -63,12 +63,6 @@ Detail
 ``Shide`` hide the minimal terminal.
 
 ``Stoggle`` toggle the minimal terminal.
-
-.. code:: vim
-
-   Sshow
-   Shide
-   Stoggle
 
 **execute**
 
@@ -106,14 +100,7 @@ Detail
    Sfile  ~/test.sh
 
 
-
-
 **alter**
 
 ``Salt`` create another terminal, which wont be triggerd by commands
-
-.. code:: vim
-
-   " create another terminal
-   Salt
 

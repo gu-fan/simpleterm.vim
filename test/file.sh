@@ -1,13 +1,11 @@
 #!/bin/bash
-echo 111
+#Declare array with 4 elements
+ARRAY=( 'Debian Linux' 'Redhat Linux' Ubuntu Linux )
+# get number of elements in the array
+ELEMENTS=${#ARRAY[@]}
 
-
-echo 113
-echo 123
-echo 133
-echo $HOME
-
-for i in 1 2 3 4 5
-do
-echo "Welcome $i times"
-done
+# echo each element in array 
+# for loop
+for (( i=0;i<$ELEMENTS;i++)); do
+    echo ${ARRAY[${i}]}
+done 
