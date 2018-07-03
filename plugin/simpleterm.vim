@@ -1,4 +1,4 @@
-" simpleterm.vim        simple terminal in vim
+" simpleterm.vim        simple terminal in vim ( without losing focus
 " Author:    gu.fan at https://github.com/gu-fan
 " License:   wtfpl at http://sam.zoy.org/wtfpl/COPYING.
 if !has("terminal")
