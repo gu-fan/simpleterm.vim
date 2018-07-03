@@ -9,13 +9,20 @@ simple terminal in vim
 
 Require and Install
 -------------------
+
+
 Require
     Vim 8.1+  with ``+terminal``
+
+
 
 Install
     ``Plug 'gu-fan/simpleterm.vim'``
 
+
+
 **NOTE** if ``/bin/zsh`` exists, it will be used
+
 
 
 Usage
@@ -24,22 +31,23 @@ Usage
 Commands
 ~~~~~~~~
 
-+ ``Sshow`` show a terminal 
-+ ``Shide`` hide the terminal
-+ ``Stoggle`` toggle the terminal
 
-+ ``Scd`` set terminal's dir
-+ ``Sexe`` execute in terminal
-+ ``Srun`` run a background job and show after finished
++ ``Sshow``     show a terminal 
++ ``Shide``     hide the terminal
++ ``Stoggle``   toggle the terminal
++ ``Scd``       set terminal's dir
++ ``Sexe``      execute in terminal
++ ``Srun``      run a background job and show terminal after finished
++ ``Sline``     execute in terminal with line
++ ``Sfile``     source in terminal with file
++ ``Salt``      create an alternative terminal
++ ``SKill``     Kill all the terminal
 
-+ ``Sline`` execute in terminal with line
-+ ``Sfile`` source in terminal with file
 
-+ ``Salt`` create an alternative terminal
-+ ``SKill`` Kill all the terminal
 
 Maps
 ~~~~
+
 
 .. code:: vim
 
@@ -63,8 +71,10 @@ Maps
     tnor <F1>   <C-\><C-n>          
         
 
+
 Detail
 ~~~~~~
+
 
 **show/hide**
 
@@ -116,16 +126,21 @@ Detail
 
 **alter**
 
+
 ``Salt`` create another terminal, which wont be triggerd by commands
 
+
 ``Skill`` Kill all terminal
+
 
 
 Further
 -------
 
-All function and option are in ``g:simpleterm`` dict,
-You can change or use it::
+
+
+All function and option are in ``g:simpleterm`` object,
+change or use it::
 
     g:simpleterm.row = 7                    row height for new terminal
     g:simpleterm.pos = 'below'              row position for new terminal
@@ -134,11 +149,15 @@ You can change or use it::
     g:simpleterm.buf                        current main terminal
     g:simpleterm.bg                         current bg terminal
 
+
+
 Author & License
 ----------------
 
+
 Author
     gu.fan at https://github.com/gu-fan
+
 
 License
     wtfpl at http://sam.zoy.org/wtfpl/COPYING.
