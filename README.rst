@@ -76,6 +76,7 @@ Detail
 ``Scd`` change dir of terminal, if no ``path`` provided, change to current file's dir
 
 ``Sexe`` execute command in terminal, ``cmd`` needed
+
 ``Srun`` Run a command in background, and show terminal when finished, ``cmd`` needed
 
 ``Sline`` execute current line, if visual selected, execute multi line
@@ -114,5 +115,6 @@ Detail
 **alter**
 
 ``Salt`` create another terminal, which wont be triggerd by commands
+
 ``Skll`` Kill all the terminal.
 
