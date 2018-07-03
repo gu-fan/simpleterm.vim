@@ -1,4 +1,3 @@
-" vim:fdm=indent
 " simpleterm.vim        simple terminal in vim
 " Author:    gu.fan at https://github.com/gu-fan
 " License:   wtfpl at http://sam.zoy.org/wtfpl/COPYING.
@@ -186,3 +185,4 @@ nnor <Leader>sk :Skill<CR>
 tnor <F1>   <C-\><C-n>          
 
 
+" vim:fdm=indent
