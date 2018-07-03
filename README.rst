@@ -31,6 +31,7 @@ Commands
 
 + ``Scd`` set terminal's dir
 + ``Sexe`` execute in terminal
++ ``Srun`` Run a background job and open terminal when finished
 + ``Sline`` execute in terminal with line
 + ``Sfile`` source in terminal with file
 
@@ -48,6 +49,7 @@ Maps
 
     <leader>sc :Scd
     <leader>se :Sexe
+    <leader>sr :Srun
 
     <leader>sl :Sline
     visual <leader>sl :Sline with multi line
@@ -71,13 +73,14 @@ Detail
 
 **execute**
 
-``Scd`` change dir of terminal, if no arg provided, change to current file's dir
+``Scd`` change dir of terminal, if no ``path`` provided, change to current file's dir
 
-``Sexe`` execute command in terminal
+``Sexe`` execute command in terminal, ``cmd`` needed
+``Srun`` Run a command in background, and show terminal when finished, ``cmd`` needed
 
 ``Sline`` execute current line, if visual selected, execute multi line
 
-``Sfile`` source current file, if arg provided, source target file
+``Sfile`` source file, if no ``file`` provided, source current file
 
 .. code:: vim
 
@@ -90,6 +93,9 @@ Detail
 
    " terminal will execute 'echo 1'
    Sexe echo 1
+
+   " run a background job
+   Srun git pull
 
    " execute one line
    Sline

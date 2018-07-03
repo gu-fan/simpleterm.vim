@@ -66,13 +66,14 @@ Show/Hide/Toggle
 Execute
 
 
-*Scd* change dir of terminal, if no arg provided, change to current file's dir
+*Scd* change dir of terminal, if no {path} provided, change to current file's dir
 
-*Sexe* execute commands in terminal, {arg} should be provided
+*Sexe* execute commands in terminal, {cmd} needed
+*Srun* Run a command in background, and show terminal when finished, {cmd} needed
 
 *Sline* execute current line, if {viusal} lines selected, execute multi line
 
-*Sfile* source current file, if {arg}provided, source target file >
+*Sfile* source file, if no {file} provided, source current file >
 
    " terminal cd to %:p:h
    Scd
@@ -103,3 +104,6 @@ Alter
 
 *Salt* create another terminal, which wont be triggerd by commands
 *Skill* Kill all terminal
+
+
+vim:tw=78:ts=8:ft=help:norl:

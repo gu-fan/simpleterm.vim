@@ -1,3 +1,4 @@
+" vim:fdm=indent
 if !has("terminal")
     echom "[simpleterm.vim] vim should have +terminal support (8.1+)"
     finish
@@ -7,7 +8,6 @@ set title                       " set the terminal title to the current file
 set ttyfast                     " better screen redraw
 set visualbell                  " turn on the visual bell
 tnoremap <F1>   <C-\><C-n>
-
 
 if executable('/bin/zsh')
     set shell=/bin/zsh
@@ -40,15 +40,25 @@ fun! simpleterm.get() dict
     return self.buf
 endfun
 
-" run a job NotImplemented
-" fun! simpleterm.run(cmd) dict
-"     let self.buf = term_start(a:cmd, {"term_rows":3,"term_kill":"term"})
-" endfun
-
 fun! simpleterm.exe(cmd) dict
-    let buf = self.get()
     " \<C-U> not working
-    call term_sendkeys(buf, "\<C-W>".a:cmd."\<CR>")
+    if empty(trim(a:cmd))
+        echom "should provide cmds"
+    else
+        let buf = self.get()
+        call term_sendkeys(buf, "\<C-W>".a:cmd."\<CR>")
+    endif
+
+endfun
+
+fun! simpleterm.run(cmd) dict
+    if empty(trim(a:cmd))
+        echom "should provide cmds"
+    else
+        let buf = term_start(a:cmd, {"term_rows":1,"hidden":1,"norestore":1,"term_kill":"term","term_finish":"open","term_opencmd":self.pos." ".self.row."sp|buf %d | wincmd w"})
+        call add(self.bufs, buf)
+        echom "start running at " . buf . ": ". a:cmd
+    endif
 endfun
 
 fun! simpleterm.cd(...) dict
@@ -138,20 +148,22 @@ com! -nargs=?  Scd  call simpleterm.cd(<q-args>)
 com! -range -nargs=0  Sline call simpleterm.line(<line1>, <line2>)
 com! -nargs=?  Sfile call simpleterm.file(<q-args>)
 com! -nargs=0  Skill call simpleterm.kill()
-
+com! -nargs=*  Srun call simpleterm.run(<q-args>)
 
 
 nnor <Leader>ss :Stoggle<CR>
 nnor <Leader>sw :Sshow<CR>
 nnor <Leader>sh :Shide<CR>
 
-
 nnor <Leader>sc :Scd<CR>
 
 nnor <Leader>se :Sexe<Space>
+nnor <Leader>sr :Srun<Space>
+
 nnor <Leader>sl :Sline<CR>
 vnor <Leader>sl :Sline<CR>
 nnor <Leader>sf :Sfile<CR>
 
 nnor <Leader>sa :Salt<CR>
 nnor <Leader>sk :Skill<CR>
+
