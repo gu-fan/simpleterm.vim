@@ -97,6 +97,9 @@ Execute
    " terminal will execute 'echo 1'
    Sexe echo 1
 
+   " run a background job
+   Srun git pull
+
    " execute one line
    Sline
 
