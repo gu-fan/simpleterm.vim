@@ -148,21 +148,25 @@ fun! simpleterm.kill() dict
 endfun
 
 
-com! -nargs=0  Salt call simpleterm.alt()
 com! -nargs=0  Sshow call simpleterm.get()
 com! -nargs=0  Shide call simpleterm.hide()
 com! -nargs=0  Stoggle call simpleterm.toggle()
-com! -nargs=* -complete=file Sexe call simpleterm.exe(<q-args>)
+
 com! -nargs=?  Scd  call simpleterm.cd(<q-args>)
-com! -range -nargs=0  Sline call simpleterm.line(<line1>, <line2>)
-com! -nargs=?  Sfile call simpleterm.file(<q-args>)
-com! -nargs=0  Skill call simpleterm.kill()
+
+com! -nargs=* -complete=file Sexe call simpleterm.exe(<q-args>)
 com! -nargs=*  Srun call simpleterm.run(<q-args>)
 
+com! -range -nargs=0  Sline call simpleterm.line(<line1>, <line2>)
+com! -nargs=?  Sfile call simpleterm.file(<q-args>)
 
-nnor <Leader>ss :Stoggle<CR>
+com! -nargs=0  Skill call simpleterm.kill()
+com! -nargs=0  Salt call simpleterm.alt()
+
+
 nnor <Leader>sw :Sshow<CR>
 nnor <Leader>sh :Shide<CR>
+nnor <Leader>ss :Stoggle<CR>
 
 nnor <Leader>sc :Scd<CR>
 
