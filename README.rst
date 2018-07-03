@@ -1,4 +1,4 @@
-SimpleTerm.vim
+simpleterm.vim
 ==============
 
 Simple terminal in vim
@@ -6,15 +6,13 @@ Simple terminal in vim
 .. image::
     https://user-images.githubusercontent.com/579129/42194902-d54fadd0-7ea8-11e8-9a15-310e4f1611d7.png
 
-Require
--------
+
+Require and Install
+-------------------
 
 Vim 8.1+  with ``+terminal``
 
 if ``/bin/zsh`` exists, it will be used
-
-Install
--------
 
 ``Plug 'gu-fan/simpleterm.vim'``
 
