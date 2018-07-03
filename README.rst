@@ -3,8 +3,8 @@ simpleterm.vim
 
 Simple terminal in vim
 
-.. image::  https://user-images.githubusercontent.com/579129/42194902-d54fadd0-7ea8-11e8-9a15-310e4f1611d7.png
-   :width: 300px
+.. image::
+   https://user-images.githubusercontent.com/579129/42217450-da0da526-7ef7-11e8-9943-6e416efc137f.png
 
 
 Require and Install
