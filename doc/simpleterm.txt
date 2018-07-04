@@ -112,30 +112,32 @@ execution~
 *Sfile* source file, if no {file} provided, source current file >
 
 
-   " terminal cd to %:p:h
-   Scd
+    " execute commands (async with a small terminal window
+    Sexe git clone https://github.com/gu-fan/simpleterm.vim.git
 
-   " terminal cd to ~
-   Scd ~
+    " run a background job (and show me after finished
+    Srun git pull 
 
-   " terminal will execute 'echo 1'
-   Sexe echo 1
+    " cd to simpleterm.vim
+    Scd simpleterm.vim
 
-   " run a background job
-   Srun git pull
+    " without path, cd to current buffer's dir
+    Scd
 
-   " execute current line from current buffer
-   Sline
+    " execute current line from current buffer
+    " so we can make a file contain our script commands
+    " like dev & test & make & deploy
+    Sline
 
-   " execute multi line
-   '<,'>Sline
+    " execute multi line (visual mode
+    '<,'>Sline
 
+    " source file of current buffer
+    Sfile
 
-   " source current file
-   Sfile
+    " source target file
+    Sfile  ~/test.sh
 
-   " source target file
-   Sfile  ~/test.sh
 
 ------------------
 alter~
