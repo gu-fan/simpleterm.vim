@@ -49,10 +49,10 @@ Note if '/bin/zsh' exists, it will be used
     " cd to a dir (if no path, cd to lcd
     Scd simpleterm.vim
 
-    " execute current line in buffer ( multiline in visual mode
+    " execute current line in buffer (multiline in visual mode
     Sline
 
-    " source target file ( in no target, source current file
+    " source target file (if no target, source current file
     Sfile  ~/test.sh
 
     " so, as you can easily run cmds from files
