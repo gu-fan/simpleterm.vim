@@ -13,7 +13,7 @@ Require and Install
 
 
 Require
-    Vim 8.1+  with ``+terminal``
+    vim 8.1+  with ``+terminal``
 
 
 

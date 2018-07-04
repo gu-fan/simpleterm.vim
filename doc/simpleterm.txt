@@ -20,7 +20,7 @@
 
 
 Require >
-    Vim 8.1+ and |+terminal|
+    vim 8.1+ and |+terminal|
 
 
 
