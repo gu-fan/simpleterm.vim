@@ -37,53 +37,32 @@ Note if '/bin/zsh' exists, it will be used
 
 
 ------------------------------------------
-2.1 Commands~
+2.1 Example~
 
-
-
-|Sshow|   show a terminal 
-|Shide|   hide the terminal
-
-|Stoggle| toggle the terminal
-|Scd|     set terminal's dir
-
-|Sexe|    execute in terminal
-|Srun|    run a backgorund job and show terminal after finished
-|Sline|   execute in terminal with line
-|Sfile|   source in terminal with file
-
-|Salt|    create an alternative terminal
-|Skill|   Kill all the terminal
-
-
-
-------------------------------------------
-2.2 Maps~
 >
+    " execute commands (async in terminal window
+    Sexe git clone https://github.com/gu-fan/simpleterm.vim.git
 
-    nnor <Leader>sw :Sshow<CR>
-    nnor <Leader>sh :Shide<CR>
-    nnor <Leader>ss :Stoggle<CR>
+    " run background jobs (and show it when finished
+    Srun git pull 
 
-    nnor <Leader>sc :Scd<CR>
+    " cd to a dir (if no path, cd to lcd
+    Scd simpleterm.vim
 
-    nnor <Leader>se :Sexe<Space>
-    nnor <Leader>sr :Srun<Space>
+    " execute current line in buffer ( multiline in visual mode
+    Sline
 
-    nnor <Leader>sl :Sline<CR>
-    vnor <Leader>sl :Sline<CR>      
-    nnor <Leader>sf :Sfile<CR>
+    " source target file ( in no target, source current file
+    Sfile  ~/test.sh
 
-    nnor <Leader>sa :Salt<CR>
-    nnor <Leader>sk :Skill<CR>
+    " so, as you can easily run cmds from files
+    " you can keep scipt for works: 
+    " setup/dev/test/make/deploy/coffee...
 
-    " In terminal, use <ESC> to toggle terminal-mode
-    tnor <ESC>   <C-\><C-n>          
-
-
+    " see https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/e1rnx8g
 
 ------------------------------------------
-2.3 Details~
+2.2 Details~
 
 
 ------------------
@@ -112,33 +91,6 @@ execution~
 *Sfile* source file, if no {file} provided, source current file >
 
 
-    " execute commands (async with a small terminal window
-    Sexe git clone https://github.com/gu-fan/simpleterm.vim.git
-
-    " run a background job (and show me after finished
-    Srun git pull 
-
-    " cd to simpleterm.vim
-    Scd simpleterm.vim
-
-    " without path, cd to current buffer's dir
-    Scd
-
-    " execute current line from current buffer
-    " so we can make a file contain our script commands
-    " like dev & test & make & deploy
-    Sline
-
-    " execute multi line (visual mode
-    '<,'>Sline
-
-    " source file of current buffer
-    Sfile
-
-    " source target file
-    Sfile  ~/test.sh
-
-
 ------------------
 alter~
 
@@ -148,6 +100,28 @@ alter~
 
 *Skill* Kill all terminal
 
+------------------------------------------
+2.3 Maps~
+>
+
+    nnor <Leader>sw :Sshow<CR>
+    nnor <Leader>sh :Shide<CR>
+    nnor <Leader>ss :Stoggle<CR>
+
+    nnor <Leader>sc :Scd<CR>
+
+    nnor <Leader>se :Sexe<Space>
+    nnor <Leader>sr :Srun<Space>
+
+    nnor <Leader>sl :Sline<CR>
+    vnor <Leader>sl :Sline<CR>      
+    nnor <Leader>sf :Sfile<CR>
+
+    nnor <Leader>sa :Salt<CR>
+    nnor <Leader>sk :Skill<CR>
+
+    " In terminal, use <ESC> to toggle terminal-mode
+    tnor <ESC>   <C-\><C-n>          
 
 -----------------------------------------------------------------------------
 3. Further                                              *simpleterm-further*
