@@ -134,7 +134,6 @@ Detail
 ``Skill`` Kill all terminal
 
 
-
 Further
 -------
 

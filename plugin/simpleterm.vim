@@ -19,7 +19,8 @@ if !exists("g:simpleterm")
     let g:simpleterm= {"bufs":[]}
 endif
 
-let g:simpleterm.row = 7
+let g:simpleterm.row = 10
+let g:simpleterm._row = 10          " alt window always
 let g:simpleterm.pos = "below"
 
 fun! simpleterm.get() dict
@@ -109,6 +110,7 @@ fun! simpleterm.hide() dict
         if win != -1
             let cur = winnr()
             let cur = win > cur ? cur : cur-1
+            let g:simpleterm.row = winheight(win)
             exe win.'hide'
             exe cur . 'wincmd w'
         endif
@@ -125,7 +127,7 @@ endfun
 
 fun! simpleterm.alt() dict
     let cur = winnr()
-    exe self.pos.' terminal ++rows='. self.row.' ++kill=term'
+    exe self.pos.' terminal ++rows='. self._row.' ++kill=term'
     let last = bufnr('$')
     if !exists("self.buf") || !bufexists(self.buf)
         let self.buf = last
@@ -148,6 +150,7 @@ fun! simpleterm.kill() dict
     let self.bufs = []
     let self.buf = v:null
 endfun
+
 
 
 com! -nargs=0  Sshow call simpleterm.get()
