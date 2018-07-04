@@ -110,7 +110,7 @@ fun! simpleterm.hide() dict
         if win != -1
             let cur = winnr()
             let cur = win > cur ? cur : cur-1
-            let g:simpleterm.row = winheight(win)
+            let self.row = winheight(win)
             exe win.'hide'
             exe cur . 'wincmd w'
         endif
