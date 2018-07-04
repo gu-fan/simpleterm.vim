@@ -181,8 +181,8 @@ nnor <Leader>sf :Sfile<CR>
 nnor <Leader>sa :Salt<CR>
 nnor <Leader>sk :Skill<CR>
 
-" In terminal, use <F1> to toggle terminal-mode
-tnor <F1>   <C-\><C-n>          
+" In terminal, use <ESC> to toggle terminal-mode
+tnor <ESC>   <C-\><C-n>          
 
 
 " vim:fdm=indent
