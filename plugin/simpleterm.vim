@@ -1,6 +1,7 @@
 " simpleterm.vim        simple terminal in vim
 " Author:    gu.fan at https://github.com/gu-fan
 " License:   wtfpl at http://sam.zoy.org/wtfpl/COPYING.
+" Thread:    https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/
 if !has("terminal")
     echom "[simpleterm.vim] vim should have +terminal support (8.1+)"
     finish

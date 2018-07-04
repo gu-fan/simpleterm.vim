@@ -111,7 +111,7 @@ Detail
    " run a background job
    Srun git pull
 
-   " execute one line
+   " execute current line from current buffer
    Sline
 
    " execute multi line
@@ -162,3 +162,8 @@ Author
 
 License
     wtfpl at http://sam.zoy.org/wtfpl/COPYING.
+
+
+Thread
+    https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/
+
