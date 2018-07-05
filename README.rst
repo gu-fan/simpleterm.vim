@@ -83,7 +83,7 @@ Detail
 **alter**
 
 
-``Salt`` create another terminal, which wont be triggerd by commands
+``Salt`` create another terminal and execute ``cmds``, not be triggerd by 'Scd/Sexe/Sline/Sfile'
 
 
 ``Skill`` Kill all terminal
@@ -107,7 +107,7 @@ Maps
     vnor <Leader>sl :Sline<CR>      
     nnor <Leader>sf :Sfile<CR>
 
-    nnor <Leader>sa :Salt<CR>
+    nnor <Leader>sa :Salt<Space>
     nnor <Leader>sk :Skill<CR>
 
     " In terminal, use <ESC> to toggle terminal-mode

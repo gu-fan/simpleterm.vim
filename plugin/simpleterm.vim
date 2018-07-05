@@ -125,14 +125,15 @@ fun! simpleterm.toggle() dict
     endif
 endfun
 
-fun! simpleterm.alt() dict
+fun! simpleterm.alt(cmd) dict
     let cur = winnr()
     exe self.pos.' terminal ++rows='. self._row.' ++kill=term'
     let last = bufnr('$')
     if !exists("self.buf") || !bufexists(self.buf)
         let self.buf = last
     endif
-    call add(self.bufs, bufnr('$'))
+    call add(self.bufs, last)
+    call term_sendkeys(last, "\<C-W>".a:cmd."\<CR>")
     exe cur . 'wincmd w'
     return last
 endfun
@@ -166,7 +167,7 @@ com! -range -nargs=0  Sline call simpleterm.line(<line1>, <line2>)
 com! -nargs=?  Sfile call simpleterm.file(<q-args>)
 
 com! -nargs=0  Skill call simpleterm.kill()
-com! -nargs=0  Salt call simpleterm.alt()
+com! -nargs=*  Salt call simpleterm.alt(<q-args>)
 
 
 nnor <Leader>sw :Sshow<CR>
@@ -182,11 +183,11 @@ nnor <Leader>sl :Sline<CR>
 vnor <Leader>sl :Sline<CR>      
 nnor <Leader>sf :Sfile<CR>
 
-nnor <Leader>sa :Salt<CR>
+nnor <Leader>sa :Salt<Space>
 nnor <Leader>sk :Skill<CR>
 
 " In terminal, use <ESC> to toggle terminal-mode
 tnor <ESC>   <C-\><C-n>          
 
 
-" vim:fdm=indent
+" vim:fdm=indent:
