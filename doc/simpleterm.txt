@@ -60,12 +60,9 @@ vimrc >
 
 so, as you can easily executing whilst editing, you can 
 
-    tracking your work as scripts and vice versa~
+    tracking your work as scripts and, vice versa~
                                         
-                                            -- gu.fan~
-
-    `e.g.: setup/dev/test/make/deploy/coffee...`
-
+`e.g.: setup/dev/test/make/deploy/coffee...`
 
 
 also see andreyorst's great conclusion on terminal integration:

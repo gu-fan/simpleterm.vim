@@ -57,9 +57,9 @@ Example
         
 so, as you can easily executing whilst editing, you can
 
-    **tracking your work as scripts, and vice versa**
-                                        
-    -- gu.fan
+
+tracking your work as scripts, and vice versa
+"""""""""""""""""""""""""""""""""""""""""""""
 
 
 ``e.g.: setup/dev/test/make/deploy/coffee...``
