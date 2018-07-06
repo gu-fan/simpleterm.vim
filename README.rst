@@ -55,9 +55,9 @@ Example
     Salt test
 
 so, as you can easily executing whilst editing 
-you can ``tracking your work as scripts, and vice versa``
+you can **tracking your work as scripts, and vice versa**
         
-    setup/dev/test/make/deploy/coffee...
+    ``setup/dev/test/make/deploy/coffee...``
 
 
 see andreyorst's great conclusion:
