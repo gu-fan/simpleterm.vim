@@ -42,7 +42,7 @@ fun! simpleterm.exe(cmd) dict
         echom "should provide cmds"
     else
         let buf = self.get()
-        call term_sendkeys(buf, "\<C-W>".a:cmd."\<CR>")
+        call term_sendkeys(buf, a:cmd."\<CR>")
     endif
 
 endfun
@@ -126,7 +126,7 @@ fun! simpleterm.alt(cmd) dict
         let self.buf = last
     endif
     call add(self.bufs, last)
-    call term_sendkeys(last, "\<C-W>".a:cmd."\<CR>")
+    call term_sendkeys(last, a:cmd."\<CR>")
     exe cur . 'wincmd w'
     return last
 endfun
