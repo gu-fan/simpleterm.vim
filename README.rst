@@ -57,11 +57,11 @@ Example
 so, as you can easily executing whilst editing 
 you can ``tracking your work as scripts, and vice versa``
         
-    ``setup/dev/test/make/deploy/coffee...``
+    setup/dev/test/make/deploy/coffee...
 
 
-see andreyorst's great conclusion
-    https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/e1rnx8g
+see andreyorst's great conclusion:
+https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/e1rnx8g
 
 Detail
 ~~~~~~
