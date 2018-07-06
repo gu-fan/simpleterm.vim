@@ -22,7 +22,9 @@ Install
 
 
 
-**NOTE** if ``/bin/zsh`` exists, it will be used
+vimrc::
+
+    set shell=/bin/zsh                      " set other shell if needed
 
 
 
@@ -124,17 +126,12 @@ All function and option are in ``g:simpleterm`` object,
 change or use it::
 
     g:simpleterm.row = 7                    row height for new terminal
-                                            will be kept after resize
 
     g:simpleterm.pos = 'below'              row position for new terminal
 
     g:simpleterm.bufs                       all the termial of simpleterm
     g:simpleterm.buf                        current main terminal
     g:simpleterm.bg                         current bg terminal
-
-
-    set shell=/bin/zsh                      " set other shell if needed
-                                            " should be set after plugin loaded
 
 
 

@@ -28,8 +28,8 @@ Install >
     Plug 'gu-fan/simpleterm.vim'
 
 
-
-Note if '/bin/zsh' exists, it will be used
+vimrc >
+    set shell=/bin/zsh                      " set other shell if needed
 
 
 -----------------------------------------------------------------------------
@@ -137,10 +137,6 @@ change or use it >
     g:simpleterm.bufs                       all the termial of simpleterm
     g:simpleterm.buf                        current main terminal
     g:simpleterm.bg                         current bg terminal
-
-
-    set shell=/bin/zsh                      " set other shell if needed
-                                            " should be set after plugin loaded
 
 
 -----------------------------------------------------------------------------
