@@ -57,7 +57,7 @@ Example
 so, as you can easily executing whilst editing 
 you can **tracking your work as scripts, and vice versa**
         
-    ``setup/dev/test/make/deploy/coffee...``
+    lkie: ``setup/dev/test/make/deploy/coffee...``
 
 
 also see andreyorst's `great conclusion on terminal integration:`__
