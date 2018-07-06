@@ -164,18 +164,18 @@ change or use it >
 4. Author & License  
 
 
-Author: >
+Author  >
     gu.fan at https://github.com/gu-fan
 
 
-License: >
+License  >
     wtfpl at http://sam.zoy.org/wtfpl/COPYING.
 
 
-Thread: >
+Thread  >
     https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/
 
-Comments >
+Discuss >
     andreyorst's great conclusion on terminal integration
     https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/e1rnx8g
 
