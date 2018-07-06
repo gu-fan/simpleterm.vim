@@ -58,10 +58,15 @@ vimrc >
     " show another window with test
     Salt test
 
-so, as you can easily executing whilst editing 
-you can `tracking your work as scripts and vice versa`
+so, as you can easily executing whilst editing, you can 
 
-    like: setup/dev/test/make/deploy/coffee...~
+    tracking your work as scripts and vice versa~
+                                        
+                                            -- gu.fan~
+
+    `e.g.: setup/dev/test/make/deploy/coffee...`
+
+
 
 also see andreyorst's great conclusion on terminal integration:
     https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/e1rnx8g

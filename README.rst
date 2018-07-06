@@ -54,10 +54,14 @@ Example
     " show another window with test
     Salt test
 
-so, as you can easily executing whilst editing 
-you can **tracking your work as scripts, and vice versa**
         
-    lkie: ``setup/dev/test/make/deploy/coffee...``
+so, as you can easily executing whilst editing, you can
+
+    tracking your work as scripts and vice versa
+                                        
+                                        -- gu.fan~
+
+    ``e.g.: setup/dev/test/make/deploy/coffee...``
 
 
 also see andreyorst's `great conclusion on terminal integration:`__
