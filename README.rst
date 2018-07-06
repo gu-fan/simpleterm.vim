@@ -1,6 +1,5 @@
-##############
 simpleterm.vim
-##############
+==============
 
 simple terminal in vim
 
