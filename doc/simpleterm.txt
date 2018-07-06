@@ -65,8 +65,6 @@ tracking your work as scripts and, vice versa~
     `e.g.: setup/dev/test/make/deploy/coffee...`
 
 
-also see andreyorst's great conclusion on terminal integration:
-    https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/e1rnx8g
 
 
 ------------------------------------------
@@ -177,5 +175,8 @@ License: >
 Thread: >
     https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/
 
+Comments >
+    andreyorst's great conclusion on terminal integration
+    https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/e1rnx8g
 
 vim:tw=78:ts=8:ft=help:norl:
