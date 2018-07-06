@@ -110,8 +110,9 @@ Maps
     nnor <Leader>sa :Salt<Space>
     nnor <Leader>sk :Skill<CR>
 
-    " In terminal, use <ESC> to toggle terminal-mode
+    " In terminal, use <ESC> to escape terminal-mode
     tnor <ESC>   <C-\><C-n>          
+    " then, use a or i to back to terminal-mode, like insert-mode
 
 
 Further
