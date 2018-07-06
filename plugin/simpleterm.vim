@@ -7,10 +7,6 @@ if !has("terminal")
     finish
 endif
 
-set title                       " set the terminal title to the current file
-set ttyfast                     " better screen redraw
-set visualbell                  " turn on the visual bell
-
 if !exists("g:simpleterm") 
     let g:simpleterm= {"bufs":[]}
 endif
