@@ -58,7 +58,8 @@ Example
     " you can tracking your work as scripts and vice versa
     " setup/dev/test/make/deploy/coffee...
 
-    " see https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/e1rnx8g
+    " see andreyorst's great conclusion
+    " https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/e1rnx8g
 
 Detail
 ~~~~~~
@@ -97,7 +98,7 @@ not triggerd by 'Scd/Sexe/Sline/Sfile', prefix ``num`` to change height
 Maps
 ~~~~
 
-
+**Default**
 .. code:: vim
 
     nnor <Leader>sw :Sshow<CR>
@@ -121,6 +122,10 @@ Maps
     " then, use a or i to back to terminal-mode, like insert-mode
 
     " see :h CTRL-W_. for terminal commands
+
+**Customize**
+
+.. code:: vim
 
     " also mapping your works, e.g.
     nnore <Leader>gp :Srun git push<CR>

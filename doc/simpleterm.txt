@@ -62,7 +62,7 @@ vimrc >
     " you can tracking your work as scripts and vice versa
     " setup/dev/test/make/deploy/coffee...
 
-    " see other's great conclusion
+    " see andreyorst's great conclusion
     " https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/e1rnx8g
 
 
@@ -108,7 +108,8 @@ not triggerd by 'Scd/Sexe/Sline/Sfile', prefix  {num} to change height
 
 ------------------------------------------
 2.3 Maps~
->
+
+Default  >
 
     nnor <Leader>sw :Sshow<CR>
     nnor <Leader>sh :Shide<CR>
@@ -131,6 +132,8 @@ not triggerd by 'Scd/Sexe/Sline/Sfile', prefix  {num} to change height
     " then, use a or i to back to terminal-mode, like insert-mode
 
     " see :h CTRL-W_. for terminal commands
+
+Customize >
 
     " also mapping your works, e.g.
     nnore <Leader>gp :Srun git push<CR>
