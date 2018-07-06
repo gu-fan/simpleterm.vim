@@ -99,6 +99,7 @@ Maps
 ~~~~
 
 **Default**
+
 .. code:: vim
 
     nnor <Leader>sw :Sshow<CR>
