@@ -5,7 +5,7 @@ simple terminal in vim
 
 
 .. image::
-   https://user-images.githubusercontent.com/579129/42217450-da0da526-7ef7-11e8-9943-6e416efc137f.png
+    https://user-images.githubusercontent.com/579129/42396749-99966032-8195-11e8-9492-a3738b35854a.png
 
 
 Require and Install
