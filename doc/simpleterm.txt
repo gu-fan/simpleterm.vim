@@ -39,6 +39,7 @@ vimrc >
 ------------------------------------------
 2.1 Example~
 
+
 >
     " execute commands (async in terminal window
     Sexe git clone https://github.com/gu-fan/simpleterm.vim.git
@@ -58,13 +59,14 @@ vimrc >
     " show another window with test
     Salt test
 
+
 so, as you can easily executing whilst editing, you can 
 
 tracking work as scripts, and vice versa~
 ----------------------------------------------
                                         
-    `e.g.: setup/dev/test/make/deploy/coffee...`
 
+    `e.g.: setup/dev/test/make/deploy/coffee...`
 
 
 
@@ -113,6 +115,7 @@ not triggerd by 'Scd/Sexe/Sline/Sfile', prefix  {num} to change height
 
 Default  >
 
+
     nnor <Leader>sw :Sshow<CR>
     nnor <Leader>sh :Shide<CR>
     nnor <Leader>ss :Stoggle<CR>
@@ -130,12 +133,14 @@ Default  >
     nnor <Leader>sk :Skill<CR>
 
     " In terminal, use <ESC> to escape terminal-mode
-    tnor <ESC>   <C-\><C-n>          
     " then, use a or i to back to terminal-mode, like insert-mode
+    tnor <ESC>   <C-\><C-n>          
 
     " see :h CTRL-W_. for terminal commands
 
+
 Customize >
+
 
     " also mapping your works, e.g.
     nnore <Leader>gp :Srun git push<CR>
@@ -153,7 +158,9 @@ Customize >
 All function and option are in {g:simpleterm} object,
 change or use it >
 
-    g:simpleterm.row = 7                    row height for new terminal
+
+    g:simpleterm.row = 10                   row height for new terminal
+                                            kept after resize
     g:simpleterm.pos = 'below'              row position for new terminal
 
     g:simpleterm.bufs                       all the termial of simpleterm

@@ -122,8 +122,8 @@ Maps
     nnor <Leader>sk :Skill<CR>
 
     " In terminal, use <ESC> to escape terminal-mode
-    tnor <ESC>   <C-\><C-n>          
     " then, use a or i to back to terminal-mode, like insert-mode
+    tnor <ESC>   <C-\><C-n>          
 
     " see :h CTRL-W_. for terminal commands
 
@@ -147,7 +147,8 @@ Further
 All function and option are in ``g:simpleterm`` object,
 change or use it::
 
-    g:simpleterm.row = 7                    win height for new terminal
+    g:simpleterm.row = 10                    win height for new terminal
+                                            kept after resize
 
     g:simpleterm.pos = 'below'              win position for new terminal
 
