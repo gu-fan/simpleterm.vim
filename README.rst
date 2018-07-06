@@ -51,8 +51,11 @@ Example
     " source target file (if no target, source current file
     Sfile  ~/test.sh
 
-    " so, as you can easily run cmds from files
-    " you can keep scipt for works: 
+    " show another window with test
+    Salt test
+
+    " so, as you can easily executing whilst editing 
+    " you can tracking your work as scripts and vice versa
     " setup/dev/test/make/deploy/coffee...
 
     " see https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/e1rnx8g
@@ -85,7 +88,8 @@ Detail
 **alter**
 
 
-``Salt`` create another terminal and execute ``cmds``, not be triggerd by 'Scd/Sexe/Sline/Sfile'
+``Salt`` create another terminal and execute ``cmds``,
+not triggerd by 'Scd/Sexe/Sline/Sfile', prefix ``num`` to change height
 
 
 ``Skill`` Kill all terminal
@@ -116,6 +120,15 @@ Maps
     tnor <ESC>   <C-\><C-n>          
     " then, use a or i to back to terminal-mode, like insert-mode
 
+    " see :h CTRL-W_. for terminal commands
+
+    " also mapping your works, e.g.
+    nnore <Leader>gp :Srun git push<CR>
+    nnore <Leader>gP :Srun git pull<CR>
+
+    " need some func?
+    " https://gist.github.com/marianposaceanu/6615458
+    nnore <Leader>fk :20Salt fortune\|cowsay\|lolcat<CR>
 
 Further
 -------
@@ -125,9 +138,9 @@ Further
 All function and option are in ``g:simpleterm`` object,
 change or use it::
 
-    g:simpleterm.row = 7                    row height for new terminal
+    g:simpleterm.row = 7                    win height for new terminal
 
-    g:simpleterm.pos = 'below'              row position for new terminal
+    g:simpleterm.pos = 'below'              win position for new terminal
 
     g:simpleterm.bufs                       all the termial of simpleterm
     g:simpleterm.buf                        current main terminal

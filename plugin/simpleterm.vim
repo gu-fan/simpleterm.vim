@@ -118,9 +118,10 @@ fun! simpleterm.toggle() dict
     endif
 endfun
 
-fun! simpleterm.alt(cmd) dict
+fun! simpleterm.alt(cmd, count) dict
     let cur = winnr()
-    exe self.pos.' terminal ++rows='. self._row.' ++kill=term'
+    let row = a:count==0 ? self._row : a:count
+    exe self.pos.' terminal ++rows='. row.' ++kill=term'
     let last = bufnr('$')
     if !exists("self.buf") || !bufexists(self.buf)
         let self.buf = last
@@ -157,10 +158,10 @@ com! -nargs=* -complete=file Sexe call simpleterm.exe(<q-args>)
 com! -nargs=*  Srun call simpleterm.run(<q-args>)
 
 com! -range -nargs=0  Sline call simpleterm.line(<line1>, <line2>)
-com! -nargs=?  Sfile call simpleterm.file(<q-args>)
+com! -nargs=? Sfile call simpleterm.file(<q-args>)
 
 com! -nargs=0  Skill call simpleterm.kill()
-com! -nargs=*  Salt call simpleterm.alt(<q-args>)
+com! -nargs=* -count=0 Salt call simpleterm.alt(<q-args>, <count>)
 
 
 nnor <Leader>sw :Sshow<CR>
