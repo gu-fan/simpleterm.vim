@@ -133,6 +133,9 @@ change or use it::
     g:simpleterm.bg                         current bg terminal
 
 
+    set shell=/bin/zsh                      " set other shell if needed
+
+
 
 Author & License
 ----------------
