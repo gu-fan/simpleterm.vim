@@ -11,13 +11,14 @@ set title                       " set the terminal title to the current file
 set ttyfast                     " better screen redraw
 set visualbell                  " turn on the visual bell
 
+if !exists("g:simpleterm") 
+    let g:simpleterm= {"bufs":[]}
+endif
+
 if executable('/bin/zsh')
     set shell=/bin/zsh
 endif
 
-if !exists("g:simpleterm") 
-    let g:simpleterm= {"bufs":[]}
-endif
 
 let g:simpleterm.row = 10
 let g:simpleterm._row = 10          " alt window always

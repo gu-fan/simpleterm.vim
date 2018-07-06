@@ -140,6 +140,7 @@ change or use it >
 
 
     set shell=/bin/zsh                      " set other shell if needed
+                                            " should be set after plugin loaded
 
 
 -----------------------------------------------------------------------------
