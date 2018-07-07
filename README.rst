@@ -120,11 +120,11 @@ Maps
 
 .. code:: vim
 
-    " also mapping your works, e.g.
+    " mapping your works, e.g.
     nnore <Leader>gp :Srun git push<CR>
     nnore <Leader>gP :Srun git pull<CR>
 
-    " need some func?
+    " have some func?
     " https://gist.github.com/marianposaceanu/6615458
     nnore <Leader>fk :20Salt fortune\|cowsay\|lolcat<CR>
 
@@ -132,11 +132,10 @@ Further
 -------
 
 
-
 All function and option are in ``g:simpleterm`` object,
 change or use it::
 
-    g:simpleterm.row = 10                    win height for new terminal
+    g:simpleterm.row = 10                   win height for new terminal
                                             kept after resize
 
     g:simpleterm.pos = 'below'              win position for new terminal
@@ -150,21 +149,8 @@ vimrc::
 
     set shell=/bin/zsh                      " set other shell if needed
 
-Author & License
+Thought & Thread
 ----------------
-
-
-Author
-    gu.fan at https://github.com/gu-fan
-
-
-License
-    wtfpl at http://sam.zoy.org/wtfpl/COPYING.
-
-
-Thread
-    https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/
-
 
 Thought
     so, as you can easily executing whilst editing, you can
@@ -179,4 +165,24 @@ that's the greatest part of vim's terminal integration
 also see andreyorst's `great conclusion on terminal integration`__
 
 __ https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/e1rnx8g
+
+
+Thread
+    https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/
+
+
+Author & License
+----------------
+
+
+Author
+    gu.fan at https://github.com/gu-fan
+
+
+License
+    wtfpl at http://sam.zoy.org/wtfpl/COPYING.
+
+
+
+
 
