@@ -49,15 +49,6 @@ Example
     Salt test
 
         
-so, as you can easily executing whilst editing, you can
-
-tracking work as scripts, and vice versa
--------------------------------------------------
-
-``e.g.: setup/dev/test/make/deploy/coffee...``
-
-
-I should say, that's the greatest part of vim's terminal integration
 
 
 Detail
@@ -176,7 +167,16 @@ Thread
 
 
 Thought
-    andreyorst's `great conclusion on terminal integration`__
+    so, as you can easily executing whilst editing, you can
+
+tracking work as scripts, and vice versa
+-------------------------------------------------
+
+``e.g.: setup/dev/test/make/deploy/coffee...``
+
+that's the greatest part of vim's terminal integration
+
+also see andreyorst's `great conclusion on terminal integration`__
 
 __ https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/e1rnx8g
 
