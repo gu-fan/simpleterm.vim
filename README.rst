@@ -57,7 +57,7 @@ tracking work as scripts, and vice versa
 ``e.g.: setup/dev/test/make/deploy/coffee...``
 
 
-that is what I said, the greatest part of vim's terminal integration
+I should say, that's the greatest part of vim's terminal integration
 
 
 Detail

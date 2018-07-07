@@ -45,13 +45,13 @@ Install >
     " run background jobs (and show me when finished
     Srun git pull 
 
-    " cd to a dir (if no path, cd to current buffer
+    " cd to a dir
     Scd simpleterm.vim
 
-    " execute current line in buffer (multiline in visual mode
+    " execute current line in buffer
     Sline
 
-    " source target file (if no target, source current file
+    " source target file
     Sfile  ~/test.sh
 
     " show another window with test
@@ -67,7 +67,7 @@ tracking work as scripts, and vice versa~
     `e.g.: setup/dev/test/make/deploy/coffee...`
 
 
-that is what I said, the greatest part of vim's terminal integration
+I should say, that's the greatest part of vim's terminal integration
 
 ------------------------------------------
 2.2 Details~
