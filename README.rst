@@ -22,12 +22,6 @@ Install
 
 
 
-vimrc::
-
-    set shell=/bin/zsh                      " set other shell if needed
-
-
-
 Usage
 -----
 
@@ -42,13 +36,13 @@ Example
     " run background jobs (and show me when finished
     Srun git pull 
 
-    " cd to a dir (if no path, cd to current buffer
+    " cd to a dir 
     Scd simpleterm.vim
 
-    " execute current line in buffer (multiline in visual mode
+    " execute current line in buffer
     Sline
 
-    " source target file (if no target, source current file
+    " source target file 
     Sfile  ~/test.sh
 
     " show another window with test
@@ -62,6 +56,8 @@ tracking work as scripts, and vice versa
 
 ``e.g.: setup/dev/test/make/deploy/coffee...``
 
+
+that is what I said, the greatest part of vim's terminal integration
 
 
 Detail
@@ -78,9 +74,11 @@ Detail
 
 **execution**
 
-``Scd`` change dir of terminal, if no ``path`` provided, change to current file's dir
+``Scd`` change dir of terminal, if no ``path``, change to current file's dir
 
 ``Sexe`` execute command in terminal, ``cmd`` needed
+
+|
 
 ``Srun`` Run a command in background, and show terminal when finished, ``cmd`` needed
 
@@ -92,8 +90,8 @@ Detail
 **alter**
 
 
-``Salt`` create another terminal and execute ``cmds``,
-not triggerd by 'Scd/Sexe/Sline/Sfile', prefix ``num`` to change height
+``Salt`` create another terminal and execute ``cmd``, prefix ``num`` to change height,
+not triggerd by ``Scd/Sexe/Sline/Sfile``, ``cmd`` needed
 
 
 ``Skill`` Kill all terminal
@@ -157,6 +155,9 @@ change or use it::
     g:simpleterm.bg                         current bg terminal
 
 
+vimrc::
+
+    set shell=/bin/zsh                      " set other shell if needed
 
 Author & License
 ----------------
@@ -174,7 +175,7 @@ Thread
     https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/
 
 
-Discuss
+Thought
     andreyorst's `great conclusion on terminal integration`__
 
 __ https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/e1rnx8g

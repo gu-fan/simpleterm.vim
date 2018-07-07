@@ -19,7 +19,7 @@ let g:simpleterm.pos = "below"
 fun! simpleterm.get() dict
     if exists("self.buf") && bufexists(self.buf)
         if bufwinnr(self.buf) != -1
-            " SKIP
+            " do nothing
             " exe bufwinnr(self.buf) . "wincmd w"
         else
             let cur = winnr()
@@ -123,9 +123,10 @@ fun! simpleterm.alt(cmd, count) dict
     let row = a:count==0 ? self._row : a:count
     exe self.pos.' terminal ++rows='. row.' ++kill=term'
     let last = bufnr('$')
-    if !exists("self.buf") || !bufexists(self.buf)
-        let self.buf = last
-    endif
+    " don't set this to self.buf, make it misleading
+    " if !exists("self.buf") || !bufexists(self.buf)
+    "     let self.buf = last
+    " endif
     call add(self.bufs, last)
     call term_sendkeys(last, a:cmd."\<CR>")
     exe cur . 'wincmd w'
@@ -162,6 +163,7 @@ com! -nargs=? Sfile call simpleterm.file(<q-args>)
 
 com! -nargs=0  Skill call simpleterm.kill()
 com! -nargs=* -count=0 Salt call simpleterm.alt(<q-args>, <count>)
+
 
 
 nnor <Leader>sw :Sshow<CR>

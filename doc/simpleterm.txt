@@ -28,8 +28,6 @@ Install >
     Plug 'gu-fan/simpleterm.vim'
 
 
-vimrc >
-    set shell=/bin/zsh                      " set other shell if needed
 
 
 -----------------------------------------------------------------------------
@@ -69,6 +67,7 @@ tracking work as scripts, and vice versa~
     `e.g.: setup/dev/test/make/deploy/coffee...`
 
 
+that is what I said, the greatest part of vim's terminal integration
 
 ------------------------------------------
 2.2 Details~
@@ -104,8 +103,8 @@ execution~
 alter~
 
 
-*Salt* create another terminal and execute {cmds},
-not triggerd by 'Scd/Sexe/Sline/Sfile', prefix  {num} to change height
+*Salt* create another terminal and execute {cmd}, prefix  {num} to change height,
+not triggerd by 'Scd/Sexe/Sline/Sfile', {cmd} needed
 
 
 *Skill* Kill all terminal
@@ -168,6 +167,9 @@ change or use it >
     g:simpleterm.bg                         current bg terminal
 
 
+vimrc >
+    set shell=/bin/zsh                      " set shell if needed
+
 -----------------------------------------------------------------------------
 4. Author & License  
 
@@ -183,7 +185,7 @@ License  >
 Thread  >
     https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/
 
-Discuss >
+Thought >
     andreyorst's great conclusion on terminal integration
     https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/e1rnx8g
 
