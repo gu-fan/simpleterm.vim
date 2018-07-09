@@ -55,12 +55,11 @@ Example
     " source target file 
     Sfile  ~/test.sh
 
-    " start another terminal with test
-    Sadd test
-
     " bind current buffer with last terminal
     Sbind
         
+    " start another terminal with test
+    Sadd test
 
 
 Detail
