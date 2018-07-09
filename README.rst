@@ -10,7 +10,9 @@ simple terminal in vim
 Changes
 --------
 
-d23714312767816793753c96c1a859da98b9545f
+`d23714312767816793753c96c1a859da98b9545f`__
+
+__  https://github.com/gu-fan/simpleterm.vim/commit/d23714312767816793753c96c1a859da98b9545f
 
 - Salt to Sadd
 - Add Sbind
