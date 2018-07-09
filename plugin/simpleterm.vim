@@ -127,7 +127,7 @@ fun! simpleterm.run(cmd) dict
                     \ "term_kill":"term","term_finish":"open",
                     \ "term_opencmd":self.pos." ".self.row."sp|buf %d"
                     \ })
-            call self._track(self.bg, {"bg": true, "row": self.row})
+            call self._track(self.bg, {"bg": 1, "row": self.row})
             echom "start running at " . self.bg. ": ". a:cmd
         endif
 endfun
