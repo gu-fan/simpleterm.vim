@@ -100,6 +100,7 @@ not triggerd by ``Scd/Sexe/Sline/Sfile``, ``cmd`` needed
 ``Sbind`` bind current buffer with terminal ``idx`` in terminal list,
 then it only triggered by bind buffer
 if no ``idx`` provided, bind to last terminal,
+use 0 / -2 to bind to 'first / one before last'
 
 ``Skill`` Kill all terminal
 
