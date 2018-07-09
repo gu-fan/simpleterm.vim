@@ -7,6 +7,13 @@ simple terminal in vim
 .. image::
     https://user-images.githubusercontent.com/579129/42396749-99966032-8195-11e8-9492-a3738b35854a.png
 
+Changes
+--------
+
+
+- Salt to Sadd
+- Add Sbind
+
 
 Require and Install
 -------------------
@@ -45,9 +52,11 @@ Example
     " source target file 
     Sfile  ~/test.sh
 
-    " show another window with test
-    Salt test
+    " start another terminal with test
+    Sadd test
 
+    " bind current buffer with last terminal
+    Sbind
         
 
 
@@ -81,9 +90,13 @@ Detail
 **alter**
 
 
-``Salt`` create another terminal and execute ``cmd``, prefix ``num`` to change height,
+``Sadd`` create another terminal and execute ``cmd``, prefix ``num`` to change height,
 not triggerd by ``Scd/Sexe/Sline/Sfile``, ``cmd`` needed
 
+
+``Sbind`` bind current buffer with terminal ``idx`` in terminal list,
+then it only triggered by bind buffer
+if no ``idx`` provided, bind to last terminal,
 
 ``Skill`` Kill all terminal
 
@@ -107,7 +120,8 @@ Maps
     vnor <Leader>sl :Sline<CR>      
     nnor <Leader>sf :Sfile<CR>
 
-    nnor <Leader>sa :Salt<Space>
+    nnor <Leader>sa :Sadd<Space>
+    nnor <Leader>sb :Sbind<CR>
     nnor <Leader>sk :Skill<CR>
 
     " In terminal, use <ESC> to escape terminal-mode
@@ -126,7 +140,7 @@ Maps
 
     " have some func?
     " https://gist.github.com/marianposaceanu/6615458
-    nnore <Leader>fk :20Salt fortune\|cowsay\|lolcat<CR>
+    nnore <Leader>fk :20Sadd fortune\|cowsay\|lolcat<CR>
 
 Further
 -------
@@ -135,13 +149,13 @@ Further
 All function and option are in ``g:simpleterm`` object,
 change or use it::
 
-    g:simpleterm.row = 10                   win height for new terminal
-                                            kept after resize
+    g:simpleterm.row = 10                   initial win height for new terminal
+                                            kept for each terminal after resize
 
     g:simpleterm.pos = 'below'              win position for new terminal
 
     g:simpleterm.bufs                       all the termial of simpleterm
-    g:simpleterm.buf                        current main terminal
+    g:simpleterm.main                       current main terminal
     g:simpleterm.bg                         current bg terminal
 
 

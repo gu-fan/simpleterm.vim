@@ -27,32 +27,74 @@ if !has("terminal")
 endif
 
 if !exists("g:simpleterm") 
-    let g:simpleterm= {"bufs":[]}
+    let g:simpleterm= {}
 endif
 
+if !exists("g:simpleterm.bufs") 
+    let g:simpleterm.bufs = {}
+    let g:simpleterm._binds = {}
+    let g:simpleterm._bufs = []
+endif
 
 let g:simpleterm.row = 10
-let g:simpleterm._row = 10          " alt window always
 let g:simpleterm.pos = "below"
 
+
+""""""""""""""""""""""""""""
+" PRIVATE 
+""""""""""""""""""""""""""""
+
+
+fun! simpleterm._get_buf() dict
+    let buf = get(self._binds, bufnr('%'))
+    " echom "CHECK" . buf
+    if buf != 0 && bufexists(buf)
+        " echom "GET BIND" . buf
+        return buf
+    elseif exists("self.main") && bufexists(self.main)
+        " echom "GET MAIN" . self.main
+        return self.main
+    else
+        return 0
+    endif
+endfun
+
+fun! simpleterm._track(buf, opt) dict
+    let self.bufs[a:buf] = a:opt
+    call add(self._bufs, a:buf)
+endfun
+
+
+fun! simpleterm._show(buf) dict
+    if bufwinnr(a:buf) == -1
+        let cur = winnr()
+        exe self.pos.' '. self._row(a:buf). 'sp'
+        exe "buf " . a:buf
+        exe cur . 'wincmd w'
+    endif
+    return a:buf
+endfun
+
+fun! simpleterm._row(buf) dict
+    let _b = get(self.bufs,a:buf, {"row": 10})
+    return _b.row
+endfun
+
+""""""""""""""""""""""""""""
+
 fun! simpleterm.get() dict
-    if exists("self.buf") && bufexists(self.buf)
-        if bufwinnr(self.buf) != -1
-            " do nothing
-            " exe bufwinnr(self.buf) . "wincmd w"
-        else
-            let cur = winnr()
-            exe self.pos.' '. self.row. 'sp'
-            exe "buf " . self.buf
-            exe cur . 'wincmd w'
-        endif
+    let _buf = self._get_buf()
+    " echom "GET " . _buf
+    if _buf != 0
+        return self._show(_buf)
     else
         let cur = winnr()
         exe self.pos.' terminal ++rows='. self.row.' ++kill=term'
-        let self.buf = bufnr("$")
+        let self.main = bufnr("$")
+        call self._track(self.main, {"row": self.row})
         exe cur . 'wincmd w'
+        return self.main
     endif
-    return self.buf
 endfun
 
 fun! simpleterm.exe(cmd) dict
@@ -70,18 +112,23 @@ fun! simpleterm.run(cmd) dict
         if empty(trim(a:cmd))
             echom "should provide cmds"
         else
-                " we can not skip, cause no way to reuse the old one
-                " let skip_new = 0
-                " if exists("self.bg") && bufexists(self.bg)
-                "   let job = term_getjob(self.bg)
-                "   if job_status(job) == "run"
-                "     let skip_new = 1
-                "   endif
-                " endif
-                
-                let self.bg = term_start(a:cmd, {"term_rows":1,"hidden":1,"norestore":1,"term_kill":"term","term_finish":"open","term_opencmd":self.pos." ".self.row."sp|buf %d"})
-                call add(self.bufs, self.bg)
-                echom "start running at " . self.bg. ": ". a:cmd
+            " we can not skip, cause no way to reuse the old one
+            " let skip_new = 0
+            " if exists("self.bg") && bufexists(self.bg)
+            "   let job = term_getjob(self.bg)
+            "   if job_status(job) == "run"
+            "     let skip_new = 1
+            "   endif
+            " endif
+            
+            let self.bg = term_start(a:cmd, {
+                    \ "term_rows":1,"hidden":1,
+                    \ "norestore":1,
+                    \ "term_kill":"term","term_finish":"open",
+                    \ "term_opencmd":self.pos." ".self.row."sp|buf %d"
+                    \ })
+            call self._track(self.bg, {"bg": true, "row": self.row})
+            echom "start running at " . self.bg. ": ". a:cmd
         endif
 endfun
 
@@ -117,55 +164,126 @@ fun! simpleterm.file(...) dict
 endfun
 
 fun! simpleterm.hide() dict
-    if exists("self.buf") && bufexists(self.buf)
-        let win = bufwinnr(self.buf)
-        if win != -1
-            let cur = winnr()
-            let cur = win > cur ? cur : cur-1
-            let self.row = winheight(win)
-            exe win.'hide'
-            exe cur . 'wincmd w'
+    let _buf = self._get_buf()
+    if _buf == 0 | return | endif
+
+    let win = bufwinnr(_buf)
+
+    if win != -1
+        let cur = winnr()
+        let cur = win > cur ? cur : cur-1
+        " echom string(self.bufs) . ":" . _buf
+        if (exists("self.bufs["._buf."].row"))
+            let self.bufs[_buf].row = winheight(win)
         endif
+        exe win . 'hide'
+        exe cur . 'wincmd w'
     endif
 endfun
 
 fun! simpleterm.toggle() dict
-    if exists("self.buf") && bufexists(self.buf) && bufwinnr(self.buf) != -1
-        call self.hide()
-    else
+    let _buf = self._get_buf()
+    " echom "TOGGLE"
+    " echom _buf
+
+    " XXX: the bufwinnr(0) will return current buf's win
+    if _buf == 0
+        return self.get()
+    endif
+    if bufwinnr(_buf) == -1
+        " echom "GET IT"
         call self.get()
+    else
+        " echom "HIDE IT"
+        call self.hide()
     endif
 endfun
 
-fun! simpleterm.alt(cmd, count) dict
+fun! simpleterm.add(cmd, count) dict
     let cur = winnr()
-    let row = a:count==0 ? self._row : a:count
+    let row = a:count==0 ? self.row : a:count
     exe self.pos.' terminal ++rows='. row.' ++kill=term'
     let last = bufnr('$')
-    " don't set this to self.buf, make it misleading
-    " if !exists("self.buf") || !bufexists(self.buf)
-    "     let self.buf = last
-    " endif
-    call add(self.bufs, last)
-    call term_sendkeys(last, a:cmd."\<CR>")
+
+    " don't set this to self.main, misleading
+    " well, as 'bind' added, its ok
+    if !exists("self.main") || !bufexists(self.main)
+        let self.main = last
+    endif
+   
+    call self._track(last, {"row" : self.row})
+    if (!empty(a:cmd))
+        call term_sendkeys(last, a:cmd."\<CR>")
+    endif
     exe cur . 'wincmd w'
     return last
 endfun
 
 fun! simpleterm.kill() dict
-    for k in self.bufs
+    " is 'bd!' really kill the terminal? seems work
+    for k in self._bufs
         if bufexists(k)
             sil! exe "bd! " . k
         endif
     endfor
 
-    if bufexists(self.buf)
-        sil! exe "bd! " . self.buf
+    if exists("self.main") && bufexists(self.main)
+        sil! exe "bd! " . self.main
+        let self.main = v:null
     endif
-    let self.bufs = []
-    let self.buf = v:null
+    let self.bufs = {}
+    let self._bufs = []
 endfun
 
+
+fun! simpleterm._kill_bind(buf) dict
+    " echom "KILL" . a:buf
+    " echom "BIND". get(g:simpleterm._binds,a:buf)
+    let buf = get(self._binds, a:buf)
+    if (buf == 0) | return | endif
+
+    if bufexists(buf)
+        sil! exe "bd! " . buf
+    endif
+    sil! call remove(self._binds, a:buf)
+    sil! call remove(self.bufs, buf)
+    sil! call remove(self._bufs, index(self._bufs, buf))
+
+endfun
+fun! simpleterm._hide(buf) dict
+endfun
+
+
+fun! simpleterm.bind(...) dict
+
+    if a:0 == 0 || a:1 == ""
+        let idx = -1
+    else
+        let idx = str2nr(a:1)
+    endif
+
+    let buf = get(self._bufs, idx)
+    if (buf==0)
+        echom "[simpleterm.vim] buf not found"
+        return
+    endif
+
+    " dettach from the main
+    if exists("self.main") && self.main == buf
+        unlet self.main
+    endif
+
+    let g:simpleterm._binds[bufnr('%')] = buf
+    echom "bind:". buf . " to " .  "current win: ".bufnr('%')
+    
+endfun
+
+aug simpleterm
+    au!
+    au! BufUnload * call simpleterm._kill_bind(expand('<abuf>'))
+    " seems misleading, skip
+    " au! BufWinLeave * call simpleterm._hide(expand('<abuf>'))
+aug END
 
 
 com! -nargs=0  Sshow call simpleterm.get()
@@ -181,7 +299,8 @@ com! -range -nargs=0  Sline call simpleterm.line(<line1>, <line2>)
 com! -nargs=? Sfile call simpleterm.file(<q-args>)
 
 com! -nargs=0  Skill call simpleterm.kill()
-com! -nargs=* -count=0 Salt call simpleterm.alt(<q-args>, <count>)
+com! -nargs=* -count=0 Sadd call simpleterm.add(<q-args>, <count>)
+com! -nargs=*  Sbind call simpleterm.bind(<q-args>)
 
 
 
@@ -198,8 +317,9 @@ nnor <Leader>sl :Sline<CR>
 vnor <Leader>sl :Sline<CR>      
 nnor <Leader>sf :Sfile<CR>
 
-nnor <Leader>sa :Salt<Space>
+nnor <Leader>sa :Sadd<CR>
 nnor <Leader>sk :Skill<CR>
+nnor <Leader>sb :Sbind<CR>
 
 " In terminal, use <ESC> to toggle terminal-mode
 tnor <ESC>   <C-\><C-n>          
