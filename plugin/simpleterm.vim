@@ -273,7 +273,7 @@ fun! simpleterm.bind(...) dict
         unlet self.main
     endif
 
-    let g:simpleterm._binds[bufnr('%')] = buf
+    let self._binds[bufnr('%')] = buf
     echom "bind:". buf . " to " .  "current win: ".bufnr('%')
     
 endfun
