@@ -180,14 +180,15 @@ change or use it >
 
     g:simpleterm.row = 10                   initial win height for new terminal
                                             kept for each terminal after resize
+
     g:simpleterm.pos = 'below'              row position for new terminal
 
+
     g:simpleterm.bufs                       all the termial of simpleterm
-    g:simpleterm.main                       current main terminal
-    g:simpleterm.bg                         current bg terminal
 
 
 vimrc >
+
     set shell=/bin/zsh                      " set shell if needed
 
 -----------------------------------------------------------------------------

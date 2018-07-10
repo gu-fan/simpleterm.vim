@@ -181,13 +181,12 @@ change or use it::
     g:simpleterm.pos = 'below'              win position for new terminal
 
     g:simpleterm.bufs                       all the termial of simpleterm
-    g:simpleterm.main                       current main terminal
-    g:simpleterm.bg                         current bg terminal
 
 
-vimrc::
+vimrc ::
 
     set shell=/bin/zsh                      " set other shell if needed
+
 
 Thought & Thread
 ----------------
