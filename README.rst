@@ -43,32 +43,42 @@ Example
     " execute commands (async in terminal
     Sexe git clone https://github.com/gu-fan/simpleterm.vim.git
 
+
     " change directory
     Scd simpleterm.vim
+
 
     " edit some file
     e simpleterm.vim/README.rst
 
+
     " execute current line
     Sline
+
 
     " source target file
     Sfile build/dev.sh
 
+
     " run background jobs (show me when finished
     Srun git push
+
 
     " edit another file
     sp test/test.rst
 
+
     " start another terminal
     Sadd
+
 
     " bind buffer with last terminal
     Sbind
 
+
     " execute command in binded terminal
     Sexe test.sh
+
 
     " finish
     wq
