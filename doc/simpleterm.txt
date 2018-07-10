@@ -106,7 +106,7 @@ execution~
 
 
 ------------------
-alter~
+alternative~
 
 
 *Sadd* create another terminal and execute {cmd}, prefix  {num} to change height,
@@ -119,7 +119,10 @@ then it only triggered by bind buffer
 use `0 / -2` to bind to `first / one before last`, if no {idx} provided, bind to last terminal `-1`
 
 
-*Skill* Kill all terminal
+*Skill* kill all terminal
+
+
+*Sjob* NotImplemented, show last job
 
 
 ------------------------------------------

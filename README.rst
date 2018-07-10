@@ -15,7 +15,7 @@ Changes
 __  https://github.com/gu-fan/simpleterm.vim/commit/d23714312767816793753c96c1a859da98b9545f
 
 - Salt to Sadd
-- Add Sbind
+- add Sbind
 
 
 Require and Install
@@ -96,7 +96,7 @@ Detail
 |
 |
 
-``Srun`` Run a command in background, and show terminal when finished, ``cmd`` needed
+``Srun`` run a command in background, and show terminal when finished, ``cmd`` needed
 
 ``Sline`` execute current line, if visual selected, execute multi line
 
@@ -104,7 +104,7 @@ Detail
 
 |
 
-**alter**
+**alternative**
 
 
 ``Sadd`` create another terminal and execute ``cmd``, prefix ``num`` to change height,
@@ -119,9 +119,12 @@ use ``0 / -2`` to bind to ``first / one before last``, if no ``idx`` provided, b
 
 |
 
-``Skill`` Kill all terminal
+``Skill`` kill all terminal
 
 |
+
+``Sjob`` NotImplemented, show last job
+
 
 Maps
 ~~~~
