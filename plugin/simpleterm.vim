@@ -59,8 +59,8 @@ fun! simpleterm._get_buf() dict
     endif
 endfun
 
-fun! simpleterm._track(buf, opt) dict
-    let self.bufs[a:buf] = a:opt
+fun! simpleterm._track(buf, ...) dict
+    let self.bufs[a:buf] = a:0 ? a:1 : {}
     call add(self._bufs, a:buf)
 endfun
 
@@ -76,22 +76,30 @@ fun! simpleterm._show(buf) dict
 endfun
 
 fun! simpleterm._row(buf) dict
-    let _b = get(self.bufs,a:buf, {"row": 10})
-    return _b.row
+    let _b = get(self.bufs, a:buf, {"row": self.row})
+    return get(_b, 'row', self.row)
 endfun
 
 """"""""""""""""""""""""""""
 
-fun! simpleterm.get() dict
-    let _buf = self._get_buf()
+fun! simpleterm.get(...) dict
+    if a:0 == 0 || a:1 == ""
+        let _buf = self._get_buf()
+    else
+        let _buf = get(self._bufs, a:1)
+        if !bufexists(_buf)
+            let _buf = 0
+        endif
+
+    endif
     " echom "GET " . _buf
     if _buf != 0
         return self._show(_buf)
     else
         let cur = winnr()
-        exe self.pos.' terminal ++rows='. self.row.' ++kill=term'
+        exe self.pos.' terminal ++rows='. self.row . ' ++kill=term'
         let self.main = bufnr("$")
-        call self._track(self.main, {"row": self.row})
+        call self._track(self.main)
         exe cur . 'wincmd w'
         return self.main
     endif
@@ -127,7 +135,7 @@ fun! simpleterm.run(cmd) dict
                     \ "term_kill":"term","term_finish":"open",
                     \ "term_opencmd":self.pos." ".self.row."sp|buf %d"
                     \ })
-            call self._track(self.bg, {"bg": 1, "row": self.row})
+            call self._track(self.bg, {"bg": 1})
             echom "start running at " . self.bg. ": ". a:cmd
         endif
 endfun
@@ -199,6 +207,10 @@ fun! simpleterm.toggle() dict
     endif
 endfun
 
+
+fun! simpleterm._keylast(...)
+    call term_sendkeys(a:1, a:2."\<CR>")
+endfun
 fun! simpleterm.add(cmd, count) dict
     let cur = winnr()
     let row = a:count==0 ? self.row : a:count
@@ -210,10 +222,12 @@ fun! simpleterm.add(cmd, count) dict
     if !exists("self.main") || !bufexists(self.main)
         let self.main = last
     endif
+
    
-    call self._track(last, {"row" : self.row})
+    call self._track(last)
     if (!empty(a:cmd))
-        call term_sendkeys(last, a:cmd."\<CR>")
+        " call term_sendkeys(self.last, a:cmd."\<CR>")
+        call timer_start(1000, function(self._keylast, [last, a:cmd]))
     endif
     exe cur . 'wincmd w'
     return last
@@ -237,7 +251,6 @@ endfun
 
 
 fun! simpleterm._kill_bind(buf) dict
-    " echom "KILL" . a:buf
     " echom "BIND". get(g:simpleterm._binds,a:buf)
     let buf = get(self._binds, a:buf)
     if (buf == 0) | return | endif
@@ -286,7 +299,7 @@ aug simpleterm
 aug END
 
 
-com! -nargs=0  Sshow call simpleterm.get()
+com! -nargs=*  Sshow call simpleterm.get(<q-args>)
 com! -nargs=0  Shide call simpleterm.hide()
 com! -nargs=0  Stoggle call simpleterm.toggle()
 
@@ -320,6 +333,8 @@ nnor <Leader>sf :Sfile<CR>
 nnor <Leader>sa :Sadd<CR>
 nnor <Leader>sk :Skill<CR>
 nnor <Leader>sb :Sbind<CR>
+
+nnor <Leader>s0 :Sshow -1<CR>
 
 " In terminal, use <ESC> to toggle terminal-mode
 tnor <ESC>   <C-\><C-n>          

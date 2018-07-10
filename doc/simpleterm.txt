@@ -122,8 +122,6 @@ use `0 / -2` to bind to `first / one before last`, if no {idx} provided, bind to
 *Skill* kill all terminal
 
 
-*Sjob* NotImplemented, show last job
-
 
 ------------------------------------------
 2.3 Maps~
@@ -147,6 +145,8 @@ Default  >
     nnor <Leader>sa :Sadd<CR>
     nnor <Leader>sb :Sbind<CR>
     nnor <Leader>sk :Skill<CR>
+
+    nnor <Leader>s0 :Sshow -1<CR>
 
     " In terminal, use <ESC> to escape terminal-mode
     " then, use a or i to back to terminal-mode, like insert-mode

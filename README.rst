@@ -79,7 +79,7 @@ Detail
 
 **show/hide**
 
-``Sshow`` create/show a minimal terminal.
+``Sshow`` create/show a minimal terminal. if ``idx`` provided, show that terminal
 
 ``Shide`` hide the minimal terminal.
 
@@ -104,7 +104,7 @@ Detail
 
 |
 
-**alternative**
+**alter**
 
 
 ``Sadd`` create another terminal and execute ``cmd``, prefix ``num`` to change height,
@@ -122,8 +122,6 @@ use ``0 / -2`` to bind to ``first / one before last``, if no ``idx`` provided, b
 ``Skill`` kill all terminal
 
 |
-
-``Sjob`` NotImplemented, show last job
 
 
 Maps
@@ -149,6 +147,8 @@ Maps
     nnor <Leader>sa :Sadd<Space>
     nnor <Leader>sb :Sbind<CR>
     nnor <Leader>sk :Skill<CR>
+
+    nnor <Leader>s0 :Sshow -1<CR>
 
     " In terminal, use <ESC> to escape terminal-mode
     " then, use a or i to back to terminal-mode, like insert-mode
