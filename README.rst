@@ -43,7 +43,7 @@ Example
     " execute commands (async in terminal
     Sexe git clone https://github.com/gu-fan/simpleterm.vim.git
 
-    " cd to a dir
+    " change directory
     Scd simpleterm.vim
 
     " edit some file
