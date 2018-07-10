@@ -113,7 +113,7 @@ not triggerd by ``Scd/Sexe/Sline/Sfile``, ``cmd`` needed
 
 |
 
-``Sbind`` bind current buffer with terminal ``idx`` in terminal list,
+``Sbind`` bind current buffer with terminal ``idx`` in simpleterm's terminal list,
 then it only triggered by bind buffer
 
 if no ``idx`` provided, bind to last terminal
@@ -124,7 +124,7 @@ if no ``idx`` provided, bind to last terminal
 
 |
 
-``idx``:  index of terminal list, ``0 , -2`` is ``first , one before last``
+``idx``:  index of simpleterm's terminal list, ``0 , -2`` is ``first , one before last``
 
 Maps
 ~~~~
