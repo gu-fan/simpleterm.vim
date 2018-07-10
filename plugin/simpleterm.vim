@@ -37,6 +37,7 @@ if !exists("g:simpleterm.bufs")
 endif
 
 let g:simpleterm.row = 10
+let g:simpleterm.delay = 900
 let g:simpleterm.pos = "below"
 
 
@@ -67,6 +68,7 @@ endfun
 
 fun! simpleterm._show(buf) dict
     if bufwinnr(a:buf) == -1
+        echom "SHOW"
         let cur = winnr()
         exe self.pos.' '. self._row(a:buf). 'sp'
         exe "buf " . a:buf
@@ -94,14 +96,14 @@ fun! simpleterm.get(...) dict
     endif
     " echom "GET " . _buf
     if _buf != 0
-        return self._show(_buf)
+        return [self._show(_buf), 'OLD']
     else
         let cur = winnr()
         exe self.pos.' terminal ++rows='. self.row . ' ++kill=term'
         let self.main = bufnr("$")
         call self._track(self.main)
         exe cur . 'wincmd w'
-        return self.main
+        return [self.main, 'NEW']
     endif
 endfun
 
@@ -110,8 +112,12 @@ fun! simpleterm.exe(cmd) dict
     if empty(trim(a:cmd))
         echom "should provide cmds"
     else
-        let buf = self.get()
-        call term_sendkeys(buf, a:cmd."\<CR>")
+        let [buf, type] = self.get()
+        if type == 'NEW'
+            call timer_start(self.delay, function(self._keylast, [buf, a:cmd]))
+        else
+            call term_sendkeys(buf, a:cmd."\<CR>")
+        endif
     endif
 
 endfun
@@ -222,7 +228,7 @@ fun! simpleterm.add(cmd, count) dict
     call self._track(last)
     if (!empty(a:cmd))
         " call term_sendkeys(self.last, a:cmd."\<CR>")
-        call timer_start(1000, function(self._keylast, [last, a:cmd]))
+        call timer_start(self.delay, function(self._keylast, [last, a:cmd]))
     endif
     exe cur . 'wincmd w'
     return last
