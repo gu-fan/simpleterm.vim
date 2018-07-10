@@ -196,7 +196,7 @@ Thought
     tracking your work as scripts
     ``e.g.: setup/dev/test/make/deploy/coffee...``
 
-also see andreyorst's `great conclusion on terminal integration`__
+    also see andreyorst's `great conclusion on terminal integration`__
 
 __ https://www.reddit.com/r/vim/comments/8vwq5a/vim_81_terminal_is_great/e1rnx8g
 
