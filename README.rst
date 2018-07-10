@@ -79,7 +79,8 @@ Detail
 
 **show/hide**
 
-``Sshow`` create/show a minimal terminal. if ``idx`` provided, show that terminal
+``Sshow`` create or show a minimal terminal. 
+if ``idx`` provided, show terminal of that index
 
 ``Shide`` hide the minimal terminal.
 
@@ -115,7 +116,7 @@ not triggerd by ``Scd/Sexe/Sline/Sfile``, ``cmd`` needed
 ``Sbind`` bind current buffer with terminal ``idx`` in terminal list,
 then it only triggered by bind buffer
 
-use ``0 / -2`` to bind to ``first / one before last``, if no ``idx`` provided, bind to last terminal ``-1``
+if no ``idx`` provided, bind to last terminal
 
 |
 
@@ -123,6 +124,7 @@ use ``0 / -2`` to bind to ``first / one before last``, if no ``idx`` provided, b
 
 |
 
+``idx``:  index of terminal list, ``0 , -2`` is ``first , one before last``
 
 Maps
 ~~~~
