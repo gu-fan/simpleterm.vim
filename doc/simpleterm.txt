@@ -39,26 +39,38 @@ Install >
 
 
 >
-    " execute commands (async in terminal window
+    " execute commands (async in terminal
     Sexe git clone https://github.com/gu-fan/simpleterm.vim.git
-
-    " run background jobs (and show me when finished
-    Srun git pull 
 
     " cd to a dir
     Scd simpleterm.vim
 
-    " execute current line in buffer
+    " edit some file
+    e simpleterm.vim/README.rst
+
+    " execute current line
     Sline
 
     " source target file
-    Sfile  ~/test.sh
+    Sfile build/dev.sh
 
-    " bind current buffer with last terminal
+    " run background jobs (show me when finished
+    Srun git push
+
+    " edit another file
+    sp test/test.rst
+
+    " start another terminal
+    Sadd
+
+    " bind buffer with last terminal
     Sbind
 
-    " start another terminal with test
-    Sadd test
+    " execute command in binded terminal
+    Sexe test.sh
+
+    " finish and close buffer
+    wq
 
 
 

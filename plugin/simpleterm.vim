@@ -274,7 +274,7 @@ fun! simpleterm.bind(...) dict
     endif
 
     let self._binds[bufnr('%')] = buf
-    echom "bind:". buf . " to " .  "current win: ".bufnr('%')
+    echom "bind terminal:". buf . " to " .  "current buf:".bufnr('%')
     
 endfun
 
