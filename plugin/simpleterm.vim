@@ -203,7 +203,7 @@ fun! simpleterm.toggle() dict
 endfun
 
 
-fun! s:_keylast(...)
+fun! simpleterm._keylast(...)
     call term_sendkeys(a:1, a:2."\<CR>")
 endfun
 fun! simpleterm.add(cmd, count) dict
@@ -222,7 +222,7 @@ fun! simpleterm.add(cmd, count) dict
     call self._track(last)
     if (!empty(a:cmd))
         " call term_sendkeys(self.last, a:cmd."\<CR>")
-        call timer_start(1000, function(s:_keylast, [last, a:cmd]))
+        call timer_start(1000, function(self._keylast, [last, a:cmd]))
     endif
     exe cur . 'wincmd w'
     return last

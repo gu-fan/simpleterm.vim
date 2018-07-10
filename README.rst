@@ -5,7 +5,7 @@ simple terminal in vim
 
 
 .. image::
-    https://user-images.githubusercontent.com/579129/42396749-99966032-8195-11e8-9492-a3738b35854a.png
+    https://user-images.githubusercontent.com/579129/42484368-4d1b1f94-8425-11e8-9413-9a4cd1f48db9.png
 
 Changes
 --------
