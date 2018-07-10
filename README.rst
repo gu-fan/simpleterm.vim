@@ -194,7 +194,8 @@ Thought & Thread
 Thought
     so, as you can easily executing while editing, you can
     tracking your work as scripts
-    ``e.g.: setup/dev/test/make/deploy/coffee...``
+
+    ``setup/dev/test/make/deploy/coffee...``
 
     also see andreyorst's `great conclusion on terminal integration`__
 
