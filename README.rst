@@ -85,6 +85,8 @@ Detail
 
 ``Stoggle`` toggle the minimal terminal.
 
+|
+
 **execution**
 
 ``Scd`` change dir of terminal, if no ``path``, change to current file's dir
@@ -100,6 +102,7 @@ Detail
 
 ``Sfile`` source file, if no ``file`` provided, source current file
 
+|
 
 **alter**
 
@@ -117,6 +120,8 @@ use ``0 / -2`` to bind to ``first / one before last``, if no ``idx`` provided, b
 |
 
 ``Skill`` Kill all terminal
+
+|
 
 Maps
 ~~~~
