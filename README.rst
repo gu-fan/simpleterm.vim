@@ -7,16 +7,6 @@ simple terminal in vim
 .. image::
     https://user-images.githubusercontent.com/579129/42484368-4d1b1f94-8425-11e8-9413-9a4cd1f48db9.png
 
-Changes
---------
-
-`d23714312`__
-
-__  https://github.com/gu-fan/simpleterm.vim/commit/d23714312767816793753c96c1a859da98b9545f
-
-- Salt to Sadd
-- add Sbind
-
 
 Require and Install
 -------------------
@@ -35,6 +25,10 @@ Install
 Usage
 -----
 
+`d23714312`__ :  add ``Sbind``, rename ``Salt`` to ``Sadd``
+
+__  https://github.com/gu-fan/simpleterm.vim/commit/d23714312767816793753c96c1a859da98b9545f
+
 Example
 ~~~~~~~
 
@@ -42,31 +36,15 @@ Example
 
 
     " execute commands (async in terminal
-    Sexe git clone https://github.com/gu-fan/simpleterm.vim.git
-
-
-    " change directory
-    Scd simpleterm.vim
-
-
-    " edit some file
-    e simpleterm.vim/README.rst
+    Sexe cat test.sh |  grep msg
 
 
     " execute current line
     Sline
 
 
-    " source target file
-    Sfile build/dev.sh
-
-
-    " run background jobs (show me when finished
-    Srun git push
-
-
-    " edit another file
-    sp test/test.rst
+    " start another file
+    sp build.sh
 
 
     " start another terminal
@@ -78,11 +56,17 @@ Example
 
 
     " execute command in binded terminal
-    Sexe test.sh
+    Sexe build.sh
+
+
+    " run background jobs (show me when finished
+    Srun git push
 
 
     " finish
     wq
+
+
 
 Detail
 ~~~~~~
@@ -101,14 +85,11 @@ if ``idx`` provided, show terminal of that index
 
 **execution**
 
-``Scd`` change dir of terminal, if no ``path``, change to current file's dir
 
 ``Sexe`` execute command in terminal, ``cmd`` needed
 
 |
-|
 
-``Srun`` run a command in background, and show terminal when finished, ``cmd`` needed
 
 ``Sline`` execute current line, if visual selected, execute multi line
 
@@ -116,8 +97,13 @@ if ``idx`` provided, show terminal of that index
 
 |
 
+``Srun`` run a command in background, and show terminal when finished, ``cmd`` needed
+
+|
+
 **alter**
 
+``Scd`` change dir of terminal, if no ``path``, change to current file's dir
 
 ``Sadd`` create another terminal and execute ``cmd``, prefix ``num`` to change height,
 not triggerd by ``Scd/Sexe/Sline/Sfile``, ``cmd`` needed
@@ -157,7 +143,8 @@ Maps
     vnor <Leader>sl :Sline<CR>      
     nnor <Leader>sf :Sfile<CR>
 
-    nnor <Leader>sa :Sadd<Space>
+
+    nnor <Leader>sa :Sadd<CR>
     nnor <Leader>sb :Sbind<CR>
     nnor <Leader>sk :Skill<CR>
 

@@ -34,37 +34,23 @@ Install >
 2. Usage                                                *simpleterm-usage*
 
 
+`d23714312` :  add `Sbind`, rename `Salt` to `Sadd`
+
 ------------------------------------------
 2.1 Example~
 
 
 >
     " execute commands (async in terminal
-    Sexe git clone https://github.com/gu-fan/simpleterm.vim.git
-
-
-    " change directory
-    Scd simpleterm.vim
-
-
-    " edit some file
-    e simpleterm.vim/README.rst
+    Sexe cat test.sh |  grep msg
 
 
     " execute current line
     Sline
 
 
-    " source target file
-    Sfile build/dev.sh
-
-
-    " run background jobs (show me when finished
-    Srun git push
-
-
-    " edit another file
-    sp test/test.rst
+    " start another file
+    sp build.sh
 
 
     " start another terminal
@@ -76,12 +62,15 @@ Install >
 
 
     " execute command in binded terminal
-    Sexe test.sh
+    Sexe build.sh
+
+
+    " run background jobs (show me when finished
+    Srun git push
 
 
     " finish
     wq
-
 
 
 
@@ -104,20 +93,22 @@ show/hide~
 execution~
 
 
-*Scd* change dir of terminal, if no {path} provided, change to current file's dir
-
-
 *Sexe* execute commands in terminal, {cmd} needed
-*Srun* Run a command in background, and show terminal when finished, {cmd} needed
+
 
 
 *Sline* execute current line, if {viusal} lines selected, execute multi line
+
 *Sfile* source file, if no {file} provided, source current file >
 
+
+*Srun* Run a command in background, and show terminal when finished, {cmd} needed
 
 ------------------
 alternative~
 
+
+*Scd* change dir of terminal, if no {path} provided, change to current file's dir
 
 *Sadd* create another terminal and execute {cmd}, prefix  {num} to change height,
 not triggerd by 'Scd/Sexe/Sline/Sfile', {cmd} needed
@@ -129,7 +120,6 @@ then it only triggered by bind buffer
 if no {idx} provided, bind to last terminal
 
 *Skill* kill all terminal
-
 
 
 {idx}:  index of simpleterm's terminal list, `0 , -2` is `first , one before last`
