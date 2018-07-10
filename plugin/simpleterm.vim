@@ -117,27 +117,27 @@ fun! simpleterm.exe(cmd) dict
 endfun
 
 fun! simpleterm.run(cmd) dict
-        if empty(trim(a:cmd))
-            echom "should provide cmds"
-        else
-            " we can not skip, cause no way to reuse the old one
-            " let skip_new = 0
-            " if exists("self.bg") && bufexists(self.bg)
-            "   let job = term_getjob(self.bg)
-            "   if job_status(job) == "run"
-            "     let skip_new = 1
-            "   endif
-            " endif
-            
-            let self.bg = term_start(a:cmd, {
+    if empty(trim(a:cmd))
+        echom "should provide cmds"
+    else
+        " we can not skip, cause no way to reuse the old one
+        " let skip_new = 0
+        " if exists("self.bg") && bufexists(self.bg)
+        "   let job = term_getjob(self.bg)
+        "   if job_status(job) == "run"
+        "     let skip_new = 1
+        "   endif
+        " endif
+
+        let self.bg = term_start(a:cmd, {
                     \ "term_rows":1,"hidden":1,
                     \ "norestore":1,
                     \ "term_kill":"term","term_finish":"open",
                     \ "term_opencmd":self.pos." ".self.row."sp|buf %d"
                     \ })
-            call self._track(self.bg, {"bg": 1})
-            echom "start running at " . self.bg. ": ". a:cmd
-        endif
+        call self._track(self.bg, {"bg": 1})
+        echom "start running at " . self.bg. ": ". a:cmd
+    endif
 endfun
 
 fun! simpleterm.cd(...) dict
@@ -192,13 +192,8 @@ endfun
 fun! simpleterm.toggle() dict
     let _buf = self._get_buf()
     " echom "TOGGLE"
-    " echom _buf
-
     " XXX: the bufwinnr(0) will return current buf's win
-    if _buf == 0
-        return self.get()
-    endif
-    if bufwinnr(_buf) == -1
+    if _buf==0 || bufwinnr(_buf) == -1
         " echom "GET IT"
         call self.get()
     else
@@ -208,7 +203,7 @@ fun! simpleterm.toggle() dict
 endfun
 
 
-fun! simpleterm._keylast(...)
+fun! s:_keylast(...)
     call term_sendkeys(a:1, a:2."\<CR>")
 endfun
 fun! simpleterm.add(cmd, count) dict
@@ -227,7 +222,7 @@ fun! simpleterm.add(cmd, count) dict
     call self._track(last)
     if (!empty(a:cmd))
         " call term_sendkeys(self.last, a:cmd."\<CR>")
-        call timer_start(1000, function(self._keylast, [last, a:cmd]))
+        call timer_start(1000, function(s:_keylast, [last, a:cmd]))
     endif
     exe cur . 'wincmd w'
     return last
