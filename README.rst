@@ -193,7 +193,7 @@ Thought & Thread
 ----------------
 
 Thought
-    so, as you can easily executing whilst editing, you can
+    so, as you can easily executing while editing, you can
     tracking your work as scripts
     ``e.g.: setup/dev/test/make/deploy/coffee...``
 
