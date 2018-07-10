@@ -92,6 +92,7 @@ Detail
 ``Sexe`` execute command in terminal, ``cmd`` needed
 
 |
+|
 
 ``Srun`` Run a command in background, and show terminal when finished, ``cmd`` needed
 
@@ -106,11 +107,14 @@ Detail
 ``Sadd`` create another terminal and execute ``cmd``, prefix ``num`` to change height,
 not triggerd by ``Scd/Sexe/Sline/Sfile``, ``cmd`` needed
 
+|
 
 ``Sbind`` bind current buffer with terminal ``idx`` in terminal list,
 then it only triggered by bind buffer
 
 use ``0 / -2`` to bind to ``first / one before last``, if no ``idx`` provided, bind to last terminal ``-1``
+
+|
 
 ``Skill`` Kill all terminal
 
