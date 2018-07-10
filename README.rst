@@ -70,7 +70,7 @@ Example
     " execute command in binded terminal
     Sexe test.sh
 
-    " finish and close buffer
+    " finish
     wq
 
 Detail
