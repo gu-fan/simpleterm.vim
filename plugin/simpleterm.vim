@@ -273,11 +273,21 @@ fun! simpleterm.bind(...) dict
     if a:0 == 0 || a:1 == ""
         let idx = -1
     else
-        let idx = str2nr(a:1)
+        let idx = str2nr(a:1) 
     endif
 
-    let buf = get(self._bufs, idx)
-    if (buf==0)
+    if (idx < 0) " -2 , -1
+        let buf = get(self._bufs, idx)
+    else        " 2, 3 , /bin/node ...
+        let idx = idx ? idx : a:1
+        let buf = bufnr(idx)
+        if !has_key(self.bufs, buf)
+            echom "[simpleterm.vim] buf not in term list"
+            return
+        endif
+    endif
+
+    if (buf==0 || buf == -1)
         echom "[simpleterm.vim] buf not found"
         return
     endif
@@ -288,7 +298,7 @@ fun! simpleterm.bind(...) dict
     endif
 
     let self._binds[bufnr('%')] = buf
-    echom "bind terminal:". buf . " to " .  "current buf:".bufnr('%')
+    echom 'bind current buf to '''.bufname(buf) . ''' : ' .  buf 
     
 endfun
 
@@ -332,7 +342,7 @@ vnor <Leader>sl :Sline<CR>
 nnor <Leader>sf :Sfile<CR>
 
 nnor <Leader>sa :Sadd<CR>
-nnor <Leader>sk :Skill<CR>
+" nnor <Leader>sk :Skill<CR>
 nnor <Leader>sb :Sbind<CR>
 
 nnor <Leader>s0 :Sshow -1<CR>

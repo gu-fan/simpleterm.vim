@@ -77,6 +77,8 @@ Detail
 ``Sshow`` create or show a minimal terminal. 
 if ``idx`` provided, show terminal of that index
 
+    ``idx``:  index of simpleterm's terminal list, ``0 , -2`` is ``first , one before last``
+
 ``Shide`` hide the minimal terminal.
 
 ``Stoggle`` toggle the minimal terminal.
@@ -105,23 +107,37 @@ if ``idx`` provided, show terminal of that index
 
 ``Scd`` change dir of terminal, if no ``path``, change to current file's dir
 
-``Sadd`` create another terminal and execute ``cmd``, prefix ``num`` to change height,
-not triggerd by ``Scd/Sexe/Sline/Sfile``, ``cmd`` needed
+``Sadd`` create another terminal and execute ``cmd``, prefix ``num`` to change height
+
+    not triggerd by ``Scd/Sexe/Sline/Sfile``, ``cmd`` needed
 
 |
 
-``Sbind`` bind current buffer with terminal ``idx`` in simpleterm's terminal list,
+``Sbind`` bind current buffer with terminal ``arg`` in simpleterm's terminal list,
 then it only triggered by bind buffer
 
-if no ``idx`` provided, bind to last terminal
+    if no ``arg`` provided, bind to last terminal
+
+    ``arg``:  arg to find buf in terminal list
+
+    ``-1 , -2`` is ``last, one before last``
+
+    ``1 , 2`` is find by buf number,  buf 1, buf 2
+
+    ``!/bin/zsh`` find terminal by name
 
 |
 
 ``Skill`` kill all terminal
 
+    exit current terminal ?  use ``exit``
+
 |
 
-``idx``:  index of simpleterm's terminal list, ``0 , -2`` is ``first , one before last``
+
+
+| 
+
 
 Maps
 ~~~~
@@ -146,7 +162,7 @@ Maps
 
     nnor <Leader>sa :Sadd<CR>
     nnor <Leader>sb :Sbind<CR>
-    nnor <Leader>sk :Skill<CR>
+    " nnor <Leader>sk :Skill<CR>
 
     nnor <Leader>s0 :Sshow -1<CR>
 
