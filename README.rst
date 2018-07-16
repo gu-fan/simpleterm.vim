@@ -25,9 +25,14 @@ Install
 Usage
 -----
 
+`32a618e9f`__ : slightly improve ``Sbind`` arguments
+
+__  https://github.com/gu-fan/simpleterm.vim/commit/32a618e9fc2c92cee3510ebe2ac8c9ae340aaa3e
+
 `d23714312`__ :  add ``Sbind``, rename ``Salt`` to ``Sadd``
 
 __  https://github.com/gu-fan/simpleterm.vim/commit/d23714312767816793753c96c1a859da98b9545f
+
 
 Example
 ~~~~~~~
