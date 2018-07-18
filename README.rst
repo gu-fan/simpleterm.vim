@@ -63,9 +63,9 @@ Example
     Sbind
 
 
-    " execute command in binded terminal
-    Sexe build.sh
-
+    " execute command in clipboard
+    Spaste
+    
 
     " run background jobs (show me when finished
     Srun git push
