@@ -25,14 +25,6 @@ Install
 Usage
 -----
 
-`538191ab6`__ add ``Spaste``
-
-__  https://github.com/gu-fan/simpleterm.vim/commit/538191ab6390d561e60b6cda0447cffeb0db20ee
-
-`32a618e9f`__ : slightly improve ``Sbind`` arguments
-
-__  https://github.com/gu-fan/simpleterm.vim/commit/32a618e9fc2c92cee3510ebe2ac8c9ae340aaa3e
-
 
 Example
 ~~~~~~~
@@ -72,6 +64,16 @@ Example
     wq
 
 
+Recent Change
+~~~~~~~~~~~~~
+
+`538191ab6`__ add ``Spaste``
+
+__  https://github.com/gu-fan/simpleterm.vim/commit/538191ab6390d561e60b6cda0447cffeb0db20ee
+
+`32a618e9f`__ slightly improve ``Sbind`` arguments
+
+__  https://github.com/gu-fan/simpleterm.vim/commit/32a618e9fc2c92cee3510ebe2ac8c9ae340aaa3e
 
 Detail
 ~~~~~~
