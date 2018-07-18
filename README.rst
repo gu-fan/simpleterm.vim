@@ -100,13 +100,14 @@ if ``idx`` provided, show terminal of that index
 
 ``Sline`` execute current line, if visual selected, execute multi line
 
+
 ``Sfile`` source file, if no ``file`` provided, source current file
 
-|
-
-``Srun`` run a command in background, and show terminal when finished, ``cmd`` needed
+``Spaste`` execute from register ``{reg}``, if no ``{reg}`` provided, execute 'reg+'
 
 |
+
+
 
 **alter**
 
@@ -115,6 +116,10 @@ if ``idx`` provided, show terminal of that index
 ``Sadd`` create another terminal and execute ``cmd``, prefix ``num`` to change height
 
     not triggerd by ``Scd/Sexe/Sline/Sfile``, ``cmd`` needed
+
+|
+
+``Srun`` run a command in background, and show terminal when finished, ``cmd`` needed
 
 |
 
@@ -163,7 +168,7 @@ Maps
     nnor <Leader>sl :Sline<CR>
     vnor <Leader>sl :Sline<CR>      
     nnor <Leader>sf :Sfile<CR>
-
+    nnor <Leader>sp :Spaste<CR>
 
     nnor <Leader>sa :Sadd<CR>
     nnor <Leader>sb :Sbind<CR>

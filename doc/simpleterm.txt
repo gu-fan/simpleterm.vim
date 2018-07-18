@@ -99,18 +99,26 @@ execution~
 
 
 
+
+
 *Sline* execute current line, if {viusal} lines selected, execute multi line
+
 
 *Sfile* source file, if no {file} provided, source current file >
 
+*Spaste* execute from register {reg}, if no {reg} provided, execute 'reg+'
 
-*Srun* Run a command in background, and show terminal when finished, {cmd} needed
+
 
 ------------------
 alternative~
 
 
 *Scd* change dir of terminal, if no {path} provided, change to current file's dir
+
+
+*Srun* Run a command in background, and show terminal when finished, {cmd} needed
+
 
 *Sadd* create another terminal and execute {cmd}, prefix  {num} to change height,
 
@@ -160,6 +168,7 @@ Default  >
     nnor <Leader>sl :Sline<CR>
     vnor <Leader>sl :Sline<CR>      
     nnor <Leader>sf :Sfile<CR>
+    nnor <Leader>sp :Spaste<CR>
 
     nnor <Leader>sa :Sadd<CR>
     nnor <Leader>sb :Sbind<CR>

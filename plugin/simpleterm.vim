@@ -40,12 +40,28 @@ let g:simpleterm.row = 10
 let g:simpleterm.delay = 900
 let g:simpleterm.pos = "below"
 
+""""""""""""""""""""""""""""
+" UTIL
+""""""""""""""""""""""""""""
+
+" get the arg , if empty or ''
+" return default
+"
+" created as vim can not handle the value for a:0
+" when using nargs=*
+fun! s:default_arg(a0, a1, default)
+    if a:a0 && !empty(a:a1)
+        return a:a1
+    else
+        return a:default
+    endif
+endfun
 
 """"""""""""""""""""""""""""
 " PRIVATE 
 """"""""""""""""""""""""""""
 
-
+" get binded terminal or main terminal for current buffer
 fun! simpleterm._get_buf() dict
     let buf = get(self._binds, bufnr('%'))
     " echom "CHECK" . buf
@@ -82,8 +98,17 @@ fun! simpleterm._row(buf) dict
     return get(_b, 'row', self.row)
 endfun
 
+
+
+" we can not sendkey directly with timer_start,
+" so need a function
+fun! simpleterm._keylast(...)
+    call term_sendkeys(a:1, a:2."\<CR>")
+endfun
+
 """"""""""""""""""""""""""""
 
+" BASIC FUNCTION GET OR CREATE
 fun! simpleterm.get(...) dict
     if a:0 == 0 || a:1 == ""
         let _buf = self._get_buf()
@@ -107,6 +132,7 @@ fun! simpleterm.get(...) dict
     endif
 endfun
 
+" BASIC FUNCTION EXE IN FOREGROUND
 fun! simpleterm.exe(cmd) dict
     " \<C-U> not working
     if empty(trim(a:cmd))
@@ -122,6 +148,7 @@ fun! simpleterm.exe(cmd) dict
 
 endfun
 
+" BASIC FUNCTION RUN IN BACKGROUND
 fun! simpleterm.run(cmd) dict
     if empty(trim(a:cmd))
         echom "should provide cmds"
@@ -146,37 +173,45 @@ fun! simpleterm.run(cmd) dict
     endif
 endfun
 
+
+
+" SITUATIONS
 fun! simpleterm.cd(...) dict
-    if a:0 == 0 || a:1 == ""
-        let lcd = expand('%:p:h')
-        call self.exe("cd ". lcd)
-    else
-        call self.exe("cd ". a:1)
-    endif
+    let lcd = s:default_arg(a:0, a:1, expand('%:p:h'))
+    call self.exe("cd ". lcd)
 endfun
 
 fun! simpleterm.line(first, last) dict
-    if a:0 == 0
-        if a:first!= a:last
-            for line in getline(a:first, a:last)
-                call self.exe(line)
-            endfor
+    if a:first!= a:last
+        for line in getline(a:first, a:last)
+            call self.exe(line)
+        endfor
 
-        else
-            call self.exe(getline('.'))
-        endif
+    else
+        call self.exe(getline('.'))
+    endif
+endfun
+
+fun! simpleterm.paste(...) dict
+    let reg = s:default_arg(a:0, a:1, "+")
+    if empty(trim(getreg(reg)))
+        echom "empty in paste " . reg
+    else
+        let lines = getreg(reg, 1, 1)
+        echo lines
+        for line in lines
+            call self.exe(line)
+        endfor
     endif
 endfun
 
 fun! simpleterm.file(...) dict
-    if a:0 == 0 || a:1 == ""
-        let file = expand('%:p')
-        call self.exe('sh '. file)
-    else
-        call self.exe('sh ' . a:1)
-    endif
+    let file = s:default_arg(a:0, a:1 , expand('%:p'))
+    call self.exe('source '. file)
 endfun
 
+
+" SHOW / HIDE
 fun! simpleterm.hide() dict
     let _buf = self._get_buf()
     if _buf == 0 | return | endif
@@ -208,10 +243,7 @@ fun! simpleterm.toggle() dict
     endif
 endfun
 
-
-fun! simpleterm._keylast(...)
-    call term_sendkeys(a:1, a:2."\<CR>")
-endfun
+" CREATE / KILL
 fun! simpleterm.add(cmd, count) dict
     let cur = winnr()
     let row = a:count==0 ? self.row : a:count
@@ -251,22 +283,11 @@ fun! simpleterm.kill() dict
 endfun
 
 
-fun! simpleterm._kill_bind(buf) dict
-    " echom "BIND". get(g:simpleterm._binds,a:buf)
-    let buf = get(self._binds, a:buf)
-    if (buf == 0) | return | endif
-
-    if bufexists(buf)
-        sil! exe "bd! " . buf
-    endif
-    sil! call remove(self._binds, a:buf)
-    sil! call remove(self.bufs, buf)
-    sil! call remove(self._bufs, index(self._bufs, buf))
-
-endfun
 fun! simpleterm._hide(buf) dict
 endfun
 
+
+" BINDING
 
 fun! simpleterm.bind(...) dict
 
@@ -302,6 +323,20 @@ fun! simpleterm.bind(...) dict
     
 endfun
 
+fun! simpleterm._kill_bind(buf) dict
+    " echom "BIND". get(g:simpleterm._binds,a:buf)
+    let buf = get(self._binds, a:buf)
+    if (buf == 0) | return | endif
+
+    if bufexists(buf)
+        sil! exe "bd! " . buf
+    endif
+    sil! call remove(self._binds, a:buf)
+    sil! call remove(self.bufs, buf)
+    sil! call remove(self._bufs, index(self._bufs, buf))
+
+endfun
+
 aug simpleterm
     au!
     au! BufUnload * call simpleterm._kill_bind(expand('<abuf>'))
@@ -326,6 +361,7 @@ com! -nargs=0  Skill call simpleterm.kill()
 com! -nargs=* -count=0 Sadd call simpleterm.add(<q-args>, <count>)
 com! -nargs=*  Sbind call simpleterm.bind(<q-args>)
 
+com! -nargs=*  Spaste call simpleterm.paste(<q-args>)
 
 
 nnor <Leader>sw :Sshow<CR>
@@ -340,14 +376,17 @@ nnor <Leader>sr :Srun<Space>
 nnor <Leader>sl :Sline<CR>
 vnor <Leader>sl :Sline<CR>      
 nnor <Leader>sf :Sfile<CR>
+nnor <Leader>sp :Spaste<CR>
 
 nnor <Leader>sa :Sadd<CR>
 " nnor <Leader>sk :Skill<CR>
 nnor <Leader>sb :Sbind<CR>
 
+
 nnor <Leader>s0 :Sshow -1<CR>
 
 " In terminal, use <ESC> to toggle terminal-mode
+" then, use a or i to back to terminal-mode, like insert-mode
 tnor <ESC>   <C-\><C-n>          
 
 
