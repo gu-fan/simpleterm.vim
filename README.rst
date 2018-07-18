@@ -8,6 +8,17 @@ simple terminal in vim
     https://user-images.githubusercontent.com/579129/42484368-4d1b1f94-8425-11e8-9413-9a4cd1f48db9.png
 
 
+Recent Change
+-------------
+
+`538191ab6`__ add ``Spaste``
+
+__  https://github.com/gu-fan/simpleterm.vim/commit/538191ab6390d561e60b6cda0447cffeb0db20ee
+
+`32a618e9f`__ slightly improve ``Sbind`` arguments
+
+__  https://github.com/gu-fan/simpleterm.vim/commit/32a618e9fc2c92cee3510ebe2ac8c9ae340aaa3e
+
 Require and Install
 -------------------
 
@@ -64,16 +75,6 @@ Example
     wq
 
 
-Recent Change
-~~~~~~~~~~~~~
-
-`538191ab6`__ add ``Spaste``
-
-__  https://github.com/gu-fan/simpleterm.vim/commit/538191ab6390d561e60b6cda0447cffeb0db20ee
-
-`32a618e9f`__ slightly improve ``Sbind`` arguments
-
-__  https://github.com/gu-fan/simpleterm.vim/commit/32a618e9fc2c92cee3510ebe2ac8c9ae340aaa3e
 
 Detail
 ~~~~~~
