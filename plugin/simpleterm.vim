@@ -37,7 +37,7 @@ if !exists("g:simpleterm.bufs")
 endif
 
 let g:simpleterm.row = 10
-let g:simpleterm.delay = 900
+let g:simpleterm.delay = 400
 let g:simpleterm.pos = "below"
 
 """"""""""""""""""""""""""""
